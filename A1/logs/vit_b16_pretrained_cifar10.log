@@ -1,0 +1,67 @@
+14:16:43  Device  : mps
+14:16:43  Model   : vit_b16_pretrained
+14:16:43  Dataset : cifar10  (small=True)
+14:16:45  Params  : 85,806,346
+14:16:45  
+--- Stage 1: head only (2 epochs) ---
+14:16:45  
+Epoch 1/2
+14:16:45  ----------------------------------------
+14:19:16    train  loss: 0.4532  acc: 0.8838
+14:20:05    val    loss: 0.2515  acc: 0.9260
+14:20:05    --> Best val acc 0.9260 — saved to models/vit_b16_pretrained_cifar10_stage1_best.pth
+14:20:05    Time: 200.6s
+14:20:05  
+Epoch 2/2
+14:20:05  ----------------------------------------
+14:23:02    train  loss: 0.1784  acc: 0.9477
+14:23:43    val    loss: 0.2253  acc: 0.9300
+14:23:43    --> Best val acc 0.9300 — saved to models/vit_b16_pretrained_cifar10_stage1_best.pth
+14:23:43    Time: 217.8s
+14:23:43  
+Best val accuracy: 0.9300
+14:23:43  
+--- Stage 2: full fine-tune (4 epochs) ---
+14:23:43  
+Epoch 1/4
+14:23:43  ----------------------------------------
+14:32:09    train  loss: 0.3884  acc: 0.8798
+14:32:56    val    loss: 0.3800  acc: 0.8690
+14:32:56    --> Best val acc 0.8690 — saved to models/vit_b16_pretrained_cifar10_stage2_best.pth
+14:32:56    Time: 553.3s
+14:32:56  
+Epoch 2/4
+14:32:56  ----------------------------------------
+14:40:44    train  loss: 0.1757  acc: 0.9427
+14:41:33    val    loss: 0.3624  acc: 0.8820
+14:41:33    --> Best val acc 0.8820 — saved to models/vit_b16_pretrained_cifar10_stage2_best.pth
+14:41:33    Time: 517.0s
+14:41:33  
+Epoch 3/4
+14:41:33  ----------------------------------------
+14:49:37    train  loss: 0.1182  acc: 0.9595
+14:50:23    val    loss: 0.3687  acc: 0.8860
+14:50:24    --> Best val acc 0.8860 — saved to models/vit_b16_pretrained_cifar10_stage2_best.pth
+14:50:24    Time: 530.6s
+14:50:24  
+Epoch 4/4
+14:50:24  ----------------------------------------
+14:58:57    train  loss: 0.1612  acc: 0.9470
+14:59:41    val    loss: 0.4232  acc: 0.8650
+14:59:41    Time: 557.0s
+14:59:41  
+Best val accuracy: 0.8860
+15:22:09  Device  : mps
+15:22:09  Model   : vit_b16_pretrained
+15:22:09  Dataset : cifar10  (small=True)
+15:22:09  Weights not found: models/vit_b16_pretrained_cifar10_best.pth
+15:22:54  Device  : mps
+15:22:54  Model   : vit_b16_pretrained
+15:22:54  Dataset : cifar10  (small=True)
+15:22:54  Weights not found: models/vit_b16_pretrained_cifar10_best.pth
+15:23:09  Device  : mps
+15:23:09  Model   : vit_b16_pretrained
+15:23:09  Dataset : cifar10  (small=True)
+15:23:09  Loaded weights from models/vit_b16_pretrained_cifar10_stage2_best.pth
+15:23:30  
+Test accuracy: 0.8560  (856/1000)

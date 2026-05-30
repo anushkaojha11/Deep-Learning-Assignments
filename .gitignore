@@ -1,0 +1,21 @@
+# Dataset
+data/
+ 
+# Trained model weights
+models/
+ 
+# macOS
+.DS_Store
+ 
+# Python
+__pycache__/
+*.py[cod]
+*.pth
+ 
+# Virtual environments
+venv/
+.env/
+ 
+# Jupyter
+.ipynb_checkpoints/
+ 

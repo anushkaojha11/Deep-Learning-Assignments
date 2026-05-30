@@ -1,0 +1,91 @@
+12:34:13  Device  : mps
+12:34:13  Model   : alexnet_lrn
+12:34:13  Dataset : cifar10  (small=True)
+12:34:14  Params  : 57,044,810
+12:34:14  Epochs  : 10
+12:34:14  
+Epoch 1/10
+12:34:14  ----------------------------------------
+12:34:49  Device  : mps
+12:34:49  Model   : alexnet_lrn
+12:34:49  Dataset : cifar10  (small=True)
+12:34:50  Params  : 57,044,810
+12:34:50  Epochs  : 10
+12:34:50  
+Epoch 1/10
+12:34:50  ----------------------------------------
+12:35:11    train  loss: 2.3028  acc: 0.0953
+12:35:14    val    loss: 2.3022  acc: 0.1050
+12:35:14    --> Best val acc 0.1050 — saved to models/alexnet_lrn_cifar10_best.pth
+12:35:14    Time: 24.0s
+12:35:14  
+Epoch 2/10
+12:35:14  ----------------------------------------
+12:35:35    train  loss: 2.3027  acc: 0.0932
+12:35:38    val    loss: 2.3021  acc: 0.1150
+12:35:38    --> Best val acc 0.1150 — saved to models/alexnet_lrn_cifar10_best.pth
+12:35:38    Time: 23.8s
+12:35:38  
+Epoch 3/10
+12:35:38  ----------------------------------------
+12:35:59    train  loss: 2.3027  acc: 0.0963
+12:36:01    val    loss: 2.3021  acc: 0.1150
+12:36:01    Time: 23.4s
+12:36:01  
+Epoch 4/10
+12:36:01  ----------------------------------------
+12:36:23    train  loss: 2.3025  acc: 0.1010
+12:36:25    val    loss: 2.3020  acc: 0.1150
+12:36:25    Time: 24.0s
+12:36:25  
+Epoch 5/10
+12:36:25  ----------------------------------------
+12:36:50    train  loss: 2.3024  acc: 0.1070
+12:36:52    val    loss: 2.3020  acc: 0.1160
+12:36:52    --> Best val acc 0.1160 — saved to models/alexnet_lrn_cifar10_best.pth
+12:36:52    Time: 26.9s
+12:36:52  
+Epoch 6/10
+12:36:52  ----------------------------------------
+12:37:19    train  loss: 2.3024  acc: 0.1013
+12:37:22    val    loss: 2.3020  acc: 0.1150
+12:37:22    Time: 29.5s
+12:37:22  
+Epoch 7/10
+12:37:22  ----------------------------------------
+12:37:50    train  loss: 2.3023  acc: 0.1025
+12:37:52    val    loss: 2.3020  acc: 0.1270
+12:37:53    --> Best val acc 0.1270 — saved to models/alexnet_lrn_cifar10_best.pth
+12:37:53    Time: 30.8s
+12:37:53  
+Epoch 8/10
+12:37:53  ----------------------------------------
+12:38:20    train  loss: 2.3022  acc: 0.1017
+12:38:22    val    loss: 2.3019  acc: 0.1520
+12:38:23    --> Best val acc 0.1520 — saved to models/alexnet_lrn_cifar10_best.pth
+12:38:23    Time: 30.2s
+12:38:23  
+Epoch 9/10
+12:38:23  ----------------------------------------
+12:38:50    train  loss: 2.3021  acc: 0.1065
+12:38:52    val    loss: 2.3019  acc: 0.1550
+12:38:53    --> Best val acc 0.1550 — saved to models/alexnet_lrn_cifar10_best.pth
+12:38:53    Time: 29.9s
+12:38:53  
+Epoch 10/10
+12:38:53  ----------------------------------------
+12:39:21    train  loss: 2.3021  acc: 0.1155
+12:39:24    val    loss: 2.3019  acc: 0.1400
+12:39:24    Time: 31.0s
+12:39:24  
+Best val accuracy: 0.1550
+15:21:04  Device  : mps
+15:21:04  Model   : alexnet_lrn
+15:21:04  Dataset : cifar10  (small=True)
+15:21:04  Loaded weights from models/alexnet_lrn_cifar10_best.pth
+15:21:32  Device  : mps
+15:21:32  Model   : alexnet_lrn
+15:21:32  Dataset : cifar10  (small=True)
+15:21:32  Loaded weights from models/alexnet_lrn_cifar10_best.pth
+15:21:35  
+Test accuracy: 0.1430  (143/1000)
