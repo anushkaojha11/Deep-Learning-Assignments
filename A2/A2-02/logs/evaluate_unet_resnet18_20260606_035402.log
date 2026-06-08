@@ -1,0 +1,4 @@
+03:54:02 | Log file: ./logs/evaluate_unet_resnet18_20260606_035402.log
+03:54:04 | Evaluating : unet_resnet18
+03:54:04 | Weights    : ./checkpoints/unet_resnet18_pet.pt
+03:54:14 | mIoU@test : 0.7582

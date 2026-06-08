@@ -1,0 +1,4 @@
+03:54:17 | Log file: ./logs/evaluate_unet_resnet18_no_skip_20260606_035417.log
+03:54:18 | Evaluating : unet_resnet18_no_skip
+03:54:18 | Weights    : ./checkpoints/unet_resnet18_no_skip_pet.pt
+03:54:29 | mIoU@test : 0.6763

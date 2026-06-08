@@ -1,0 +1,7 @@
+weights/
+checkpoints/
+__pycache__/
+*.pyc
+*.weights
+*.pt
+logs/

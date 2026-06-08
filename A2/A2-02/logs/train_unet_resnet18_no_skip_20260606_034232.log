@@ -1,0 +1,11 @@
+03:42:32 | Log file: ./logs/train_unet_resnet18_no_skip_20260606_034232.log
+03:42:33 | Model      : unet_resnet18_no_skip
+03:42:33 | Epochs     : 20
+03:42:33 | Batch size : 16
+03:42:33 | LR         : 0.001
+03:42:33 | Image size : 128
+03:42:33 | Device     : cuda
+03:42:33 | Loading dataset...
+03:42:34 | Building model...
+03:42:34 | Params: 34,420,227
+03:42:34 | Starting training...

@@ -1,0 +1,51 @@
+03:43:31 | Log file: ./logs/train_unet_resnet18_no_skip_20260606_034331.log
+03:43:33 | Model      : unet_resnet18_no_skip
+03:43:33 | Epochs     : 20
+03:43:33 | Batch size : 16
+03:43:33 | LR         : 0.001
+03:43:33 | Image size : 128
+03:43:33 | Device     : cuda
+03:43:33 | Loading dataset...
+03:43:33 | Building model...
+03:43:34 | Params: 34,420,227
+03:43:34 | Starting training...
+03:43:54 | Epoch 01/20 | Loss: 0.6281 | mIoU: 0.4513 | Time: 19.9s
+03:43:54 |   └─ New best mIoU: 0.4513 → saved to ./checkpoints/unet_resnet18_no_skip_pet.pt
+03:44:14 | Epoch 02/20 | Loss: 0.4949 | mIoU: 0.4936 | Time: 20.4s
+03:44:15 |   └─ New best mIoU: 0.4936 → saved to ./checkpoints/unet_resnet18_no_skip_pet.pt
+03:44:35 | Epoch 03/20 | Loss: 0.4426 | mIoU: 0.5113 | Time: 19.9s
+03:44:36 |   └─ New best mIoU: 0.5113 → saved to ./checkpoints/unet_resnet18_no_skip_pet.pt
+03:44:56 | Epoch 04/20 | Loss: 0.3991 | mIoU: 0.5626 | Time: 20.0s
+03:44:57 |   └─ New best mIoU: 0.5626 → saved to ./checkpoints/unet_resnet18_no_skip_pet.pt
+03:45:17 | Epoch 05/20 | Loss: 0.3801 | mIoU: 0.5919 | Time: 19.8s
+03:45:18 |   └─ New best mIoU: 0.5919 → saved to ./checkpoints/unet_resnet18_no_skip_pet.pt
+03:45:37 | Epoch 06/20 | Loss: 0.3258 | mIoU: 0.6198 | Time: 19.3s
+03:45:38 |   └─ New best mIoU: 0.6198 → saved to ./checkpoints/unet_resnet18_no_skip_pet.pt
+03:45:57 | Epoch 07/20 | Loss: 0.2960 | mIoU: 0.6359 | Time: 19.2s
+03:45:58 |   └─ New best mIoU: 0.6359 → saved to ./checkpoints/unet_resnet18_no_skip_pet.pt
+03:46:18 | Epoch 08/20 | Loss: 0.2753 | mIoU: 0.6353 | Time: 19.3s
+03:46:38 | Epoch 09/20 | Loss: 0.2622 | mIoU: 0.6481 | Time: 20.0s
+03:46:39 |   └─ New best mIoU: 0.6481 → saved to ./checkpoints/unet_resnet18_no_skip_pet.pt
+03:46:58 | Epoch 10/20 | Loss: 0.2497 | mIoU: 0.6532 | Time: 19.9s
+03:46:59 |   └─ New best mIoU: 0.6532 → saved to ./checkpoints/unet_resnet18_no_skip_pet.pt
+03:47:19 | Epoch 11/20 | Loss: 0.2267 | mIoU: 0.6635 | Time: 19.7s
+03:47:21 |   └─ New best mIoU: 0.6635 → saved to ./checkpoints/unet_resnet18_no_skip_pet.pt
+03:47:40 | Epoch 12/20 | Loss: 0.2133 | mIoU: 0.6657 | Time: 19.2s
+03:47:43 |   └─ New best mIoU: 0.6657 → saved to ./checkpoints/unet_resnet18_no_skip_pet.pt
+03:48:02 | Epoch 13/20 | Loss: 0.2046 | mIoU: 0.6660 | Time: 19.3s
+03:48:05 |   └─ New best mIoU: 0.6660 → saved to ./checkpoints/unet_resnet18_no_skip_pet.pt
+03:48:24 | Epoch 14/20 | Loss: 0.1985 | mIoU: 0.6689 | Time: 19.3s
+03:48:26 |   └─ New best mIoU: 0.6689 → saved to ./checkpoints/unet_resnet18_no_skip_pet.pt
+03:48:46 | Epoch 15/20 | Loss: 0.1928 | mIoU: 0.6657 | Time: 20.0s
+03:49:05 | Epoch 16/20 | Loss: 0.1827 | mIoU: 0.6736 | Time: 19.3s
+03:49:06 |   └─ New best mIoU: 0.6736 → saved to ./checkpoints/unet_resnet18_no_skip_pet.pt
+03:49:26 | Epoch 17/20 | Loss: 0.1755 | mIoU: 0.6749 | Time: 19.7s
+03:49:27 |   └─ New best mIoU: 0.6749 → saved to ./checkpoints/unet_resnet18_no_skip_pet.pt
+03:49:46 | Epoch 18/20 | Loss: 0.1718 | mIoU: 0.6732 | Time: 19.4s
+03:50:05 | Epoch 19/20 | Loss: 0.1682 | mIoU: 0.6763 | Time: 19.3s
+03:50:06 |   └─ New best mIoU: 0.6763 → saved to ./checkpoints/unet_resnet18_no_skip_pet.pt
+03:50:26 | Epoch 20/20 | Loss: 0.1656 | mIoU: 0.6689 | Time: 19.2s
+03:50:26 | Training complete. Best mIoU: 0.6763
+03:50:26 | Best mIoU : 0.6763 at epoch 19
+03:50:26 | Final Loss: 0.1656
+03:50:26 | Training plot saved → ./output/history_unet_resnet18_no_skip.png
