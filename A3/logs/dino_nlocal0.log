@@ -1,0 +1,75 @@
+2026-06-13 01:55:30 | Device  : cuda
+2026-06-13 01:55:30 | Model   : dino
+2026-06-13 01:55:30 | Epochs  : 50
+2026-06-13 01:55:30 | Train   : True
+2026-06-13 01:55:30 | Eval    : True
+2026-06-13 01:55:30 | Run name: dino_nlocal0
+2026-06-13 01:55:30 | Starting DINO training ...
+2026-06-13 01:56:37 | Epoch 001 | Loss: 4.9652 | Center norm: 5.6537 | Time: 66.0s
+2026-06-13 01:57:38 | Epoch 002 | Loss: 4.2221 | Center norm: 7.3603 | Time: 61.0s
+2026-06-13 01:58:45 | Epoch 003 | Loss: 3.8164 | Center norm: 8.6107 | Time: 66.3s
+2026-06-13 01:59:52 | Epoch 004 | Loss: 3.6344 | Center norm: 9.4939 | Time: 67.6s
+2026-06-13 02:00:56 | Epoch 005 | Loss: 3.5078 | Center norm: 10.8064 | Time: 64.2s
+2026-06-13 02:02:00 | Epoch 006 | Loss: 3.3809 | Center norm: 12.3330 | Time: 63.1s
+2026-06-13 02:03:03 | Epoch 007 | Loss: 3.2538 | Center norm: 13.9562 | Time: 63.1s
+2026-06-13 02:04:05 | Epoch 008 | Loss: 3.1110 | Center norm: 16.7093 | Time: 62.2s
+2026-06-13 02:05:08 | Epoch 009 | Loss: 2.9617 | Center norm: 18.8020 | Time: 63.1s
+2026-06-13 02:06:12 | Epoch 010 | Loss: 2.8274 | Center norm: 21.6590 | Time: 64.4s
+2026-06-13 02:07:15 | Epoch 011 | Loss: 2.6630 | Center norm: 27.8343 | Time: 62.4s
+2026-06-13 02:08:19 | Epoch 012 | Loss: 2.5383 | Center norm: 33.7261 | Time: 64.4s
+2026-06-13 02:09:31 | Epoch 013 | Loss: 2.4316 | Center norm: 37.9407 | Time: 71.9s
+2026-06-13 02:10:34 | Epoch 014 | Loss: 2.3447 | Center norm: 40.3677 | Time: 63.0s
+2026-06-13 02:11:40 | Epoch 015 | Loss: 2.2764 | Center norm: 40.2219 | Time: 66.3s
+2026-06-13 02:12:50 | Epoch 016 | Loss: 2.2545 | Center norm: 39.7727 | Time: 69.8s
+2026-06-13 02:13:53 | Epoch 017 | Loss: 2.2101 | Center norm: 41.6475 | Time: 62.9s
+2026-06-13 02:14:57 | Epoch 018 | Loss: 2.1534 | Center norm: 41.1371 | Time: 64.1s
+2026-06-13 02:15:59 | Epoch 019 | Loss: 2.1506 | Center norm: 40.1346 | Time: 62.1s
+2026-06-13 02:17:03 | Epoch 020 | Loss: 2.1707 | Center norm: 36.4711 | Time: 63.4s
+2026-06-13 02:18:12 | Epoch 021 | Loss: 2.2007 | Center norm: 33.1205 | Time: 69.8s
+2026-06-13 02:19:20 | Epoch 022 | Loss: 2.1944 | Center norm: 31.3259 | Time: 67.3s
+2026-06-13 02:20:23 | Epoch 023 | Loss: 2.1747 | Center norm: 30.9186 | Time: 63.5s
+2026-06-13 02:21:28 | Epoch 024 | Loss: 2.1333 | Center norm: 30.4894 | Time: 64.4s
+2026-06-13 02:22:39 | Epoch 025 | Loss: 2.1063 | Center norm: 31.4860 | Time: 71.4s
+2026-06-13 02:23:46 | Epoch 026 | Loss: 2.1025 | Center norm: 30.3311 | Time: 67.0s
+2026-06-13 02:24:52 | Epoch 027 | Loss: 2.0899 | Center norm: 27.3325 | Time: 65.9s
+2026-06-13 02:25:59 | Epoch 028 | Loss: 2.0992 | Center norm: 28.9282 | Time: 66.8s
+2026-06-13 02:27:08 | Epoch 029 | Loss: 2.0669 | Center norm: 30.3459 | Time: 68.9s
+2026-06-13 02:28:10 | Epoch 030 | Loss: 2.0338 | Center norm: 28.8125 | Time: 62.7s
+2026-06-13 02:29:18 | Epoch 031 | Loss: 2.0111 | Center norm: 29.0175 | Time: 67.3s
+2026-06-13 02:30:24 | Epoch 032 | Loss: 1.9741 | Center norm: 28.9966 | Time: 66.5s
+2026-06-13 02:31:27 | Epoch 033 | Loss: 1.9665 | Center norm: 29.4074 | Time: 63.4s
+2026-06-13 02:32:34 | Epoch 034 | Loss: 1.9398 | Center norm: 28.2276 | Time: 66.2s
+2026-06-13 02:33:39 | Epoch 035 | Loss: 1.9299 | Center norm: 30.2755 | Time: 65.4s
+2026-06-13 02:34:52 | Epoch 036 | Loss: 1.9046 | Center norm: 29.3307 | Time: 73.0s
+2026-06-13 02:36:04 | Epoch 037 | Loss: 1.8903 | Center norm: 30.5038 | Time: 72.4s
+2026-06-13 02:37:08 | Epoch 038 | Loss: 1.8653 | Center norm: 32.1651 | Time: 63.6s
+2026-06-13 02:38:13 | Epoch 039 | Loss: 1.8519 | Center norm: 34.0511 | Time: 64.4s
+2026-06-13 02:39:18 | Epoch 040 | Loss: 1.8373 | Center norm: 35.3607 | Time: 65.1s
+2026-06-13 02:40:22 | Epoch 041 | Loss: 1.8245 | Center norm: 34.6483 | Time: 64.3s
+2026-06-13 02:41:25 | Epoch 042 | Loss: 1.8226 | Center norm: 36.9011 | Time: 62.8s
+2026-06-13 02:42:27 | Epoch 043 | Loss: 1.7880 | Center norm: 37.5880 | Time: 62.4s
+2026-06-13 02:43:32 | Epoch 044 | Loss: 1.8247 | Center norm: 34.2066 | Time: 64.5s
+2026-06-13 02:44:34 | Epoch 045 | Loss: 1.8066 | Center norm: 35.2557 | Time: 62.6s
+2026-06-13 02:45:43 | Epoch 046 | Loss: 1.8122 | Center norm: 33.3181 | Time: 69.1s
+2026-06-13 02:46:49 | Epoch 047 | Loss: 1.8102 | Center norm: 33.0417 | Time: 65.2s
+2026-06-13 02:47:51 | Epoch 048 | Loss: 1.7838 | Center norm: 32.1707 | Time: 62.0s
+2026-06-13 02:48:55 | Epoch 049 | Loss: 1.7782 | Center norm: 33.9845 | Time: 64.4s
+2026-06-13 02:50:03 | Epoch 050 | Loss: 1.7650 | Center norm: 35.3570 | Time: 68.0s
+2026-06-13 02:50:03 | Saved checkpoint: saved/dino_nlocal0.pt
+2026-06-13 02:50:03 | Saved plot: plots/dino_nlocal0_loss.png
+2026-06-13 02:50:03 | Starting DINO linear evaluation ...
+2026-06-13 02:50:12 |   Linear Eval Epoch 1/10 | Train Acc: 51.63%
+2026-06-13 02:50:19 |   Linear Eval Epoch 2/10 | Train Acc: 60.19%
+2026-06-13 02:50:27 |   Linear Eval Epoch 3/10 | Train Acc: 61.79%
+2026-06-13 02:50:34 |   Linear Eval Epoch 4/10 | Train Acc: 62.67%
+2026-06-13 02:50:41 |   Linear Eval Epoch 5/10 | Train Acc: 63.25%
+2026-06-13 02:50:48 |   Linear Eval Epoch 6/10 | Train Acc: 63.54%
+2026-06-13 02:50:55 |   Linear Eval Epoch 7/10 | Train Acc: 63.84%
+2026-06-13 02:51:02 |   Linear Eval Epoch 8/10 | Train Acc: 63.97%
+2026-06-13 02:51:09 |   Linear Eval Epoch 9/10 | Train Acc: 64.19%
+2026-06-13 02:51:16 |   Linear Eval Epoch 10/10 | Train Acc: 64.36%
+2026-06-13 02:51:18 | DINO Linear Eval Test Accuracy: 63.67%
+2026-06-13 02:51:18 | Running t-SNE for DINO (dino_nlocal0) ...
+2026-06-13 02:51:26 | Saved t-SNE: plots/dino_nlocal0_tsne.png
+2026-06-13 02:51:26 | Final DINO Linear Eval Accuracy: 63.67%
+2026-06-13 02:51:26 | Done.

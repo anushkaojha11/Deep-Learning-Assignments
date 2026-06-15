@@ -1,0 +1,77 @@
+2026-06-11 14:49:36 | Device  : cuda
+2026-06-11 14:49:36 | Model   : mae
+2026-06-11 14:49:36 | Epochs  : 50
+2026-06-11 14:49:36 | Train   : True
+2026-06-11 14:49:36 | Eval    : True
+2026-06-11 14:49:36 | Run name: mae_mask50
+2026-06-11 14:49:36 | Starting MAE training ...
+2026-06-11 14:50:07 | Epoch 001 | Recon Loss: 0.7509 | Time: 29.0s
+2026-06-11 14:50:40 | Epoch 002 | Recon Loss: 0.5776 | Time: 33.6s
+2026-06-11 14:51:14 | Epoch 003 | Recon Loss: 0.4852 | Time: 33.9s
+2026-06-11 14:51:48 | Epoch 004 | Recon Loss: 0.4473 | Time: 33.5s
+2026-06-11 14:52:21 | Epoch 005 | Recon Loss: 0.4300 | Time: 33.8s
+2026-06-11 14:52:55 | Epoch 006 | Recon Loss: 0.4181 | Time: 33.9s
+2026-06-11 14:53:29 | Epoch 007 | Recon Loss: 0.4085 | Time: 34.3s
+2026-06-11 14:54:04 | Epoch 008 | Recon Loss: 0.4016 | Time: 34.3s
+2026-06-11 14:54:37 | Epoch 009 | Recon Loss: 0.3956 | Time: 33.4s
+2026-06-11 14:55:12 | Epoch 010 | Recon Loss: 0.3910 | Time: 34.4s
+2026-06-11 14:55:46 | Epoch 011 | Recon Loss: 0.3872 | Time: 34.4s
+2026-06-11 14:56:20 | Epoch 012 | Recon Loss: 0.3834 | Time: 34.3s
+2026-06-11 14:56:54 | Epoch 013 | Recon Loss: 0.3800 | Time: 34.1s
+2026-06-11 14:57:29 | Epoch 014 | Recon Loss: 0.3786 | Time: 34.3s
+2026-06-11 14:58:03 | Epoch 015 | Recon Loss: 0.3757 | Time: 34.3s
+2026-06-11 14:58:37 | Epoch 016 | Recon Loss: 0.3741 | Time: 34.1s
+2026-06-11 14:59:11 | Epoch 017 | Recon Loss: 0.3720 | Time: 34.1s
+2026-06-11 14:59:46 | Epoch 018 | Recon Loss: 0.3701 | Time: 34.3s
+2026-06-11 15:00:20 | Epoch 019 | Recon Loss: 0.3687 | Time: 34.3s
+2026-06-11 15:00:54 | Epoch 020 | Recon Loss: 0.3672 | Time: 34.3s
+2026-06-11 15:01:28 | Epoch 021 | Recon Loss: 0.3657 | Time: 34.2s
+2026-06-11 15:02:02 | Epoch 022 | Recon Loss: 0.3647 | Time: 34.0s
+2026-06-11 15:02:36 | Epoch 023 | Recon Loss: 0.3629 | Time: 33.8s
+2026-06-11 15:03:10 | Epoch 024 | Recon Loss: 0.3615 | Time: 34.1s
+2026-06-11 15:03:45 | Epoch 025 | Recon Loss: 0.3606 | Time: 34.2s
+2026-06-11 15:04:19 | Epoch 026 | Recon Loss: 0.3595 | Time: 34.3s
+2026-06-11 15:04:53 | Epoch 027 | Recon Loss: 0.3589 | Time: 34.2s
+2026-06-11 15:05:27 | Epoch 028 | Recon Loss: 0.3579 | Time: 34.2s
+2026-06-11 15:06:01 | Epoch 029 | Recon Loss: 0.3564 | Time: 34.1s
+2026-06-11 15:06:36 | Epoch 030 | Recon Loss: 0.3565 | Time: 34.1s
+2026-06-11 15:07:10 | Epoch 031 | Recon Loss: 0.3558 | Time: 34.3s
+2026-06-11 15:07:44 | Epoch 032 | Recon Loss: 0.3550 | Time: 34.4s
+2026-06-11 15:08:18 | Epoch 033 | Recon Loss: 0.3545 | Time: 34.2s
+2026-06-11 15:08:53 | Epoch 034 | Recon Loss: 0.3539 | Time: 34.2s
+2026-06-11 15:09:27 | Epoch 035 | Recon Loss: 0.3532 | Time: 34.3s
+2026-06-11 15:10:01 | Epoch 036 | Recon Loss: 0.3524 | Time: 34.3s
+2026-06-11 15:10:36 | Epoch 037 | Recon Loss: 0.3522 | Time: 34.3s
+2026-06-11 15:11:09 | Epoch 038 | Recon Loss: 0.3515 | Time: 33.1s
+2026-06-11 15:11:42 | Epoch 039 | Recon Loss: 0.3514 | Time: 32.9s
+2026-06-11 15:12:15 | Epoch 040 | Recon Loss: 0.3509 | Time: 33.4s
+2026-06-11 15:12:48 | Epoch 041 | Recon Loss: 0.3503 | Time: 33.3s
+2026-06-11 15:13:21 | Epoch 042 | Recon Loss: 0.3507 | Time: 33.0s
+2026-06-11 15:13:45 | Epoch 043 | Recon Loss: 0.3496 | Time: 23.5s
+2026-06-11 15:14:08 | Epoch 044 | Recon Loss: 0.3497 | Time: 23.8s
+2026-06-11 15:14:32 | Epoch 045 | Recon Loss: 0.3494 | Time: 23.6s
+2026-06-11 15:14:56 | Epoch 046 | Recon Loss: 0.3491 | Time: 23.6s
+2026-06-11 15:15:19 | Epoch 047 | Recon Loss: 0.3491 | Time: 23.1s
+2026-06-11 15:15:42 | Epoch 048 | Recon Loss: 0.3489 | Time: 23.7s
+2026-06-11 15:16:06 | Epoch 049 | Recon Loss: 0.3491 | Time: 23.7s
+2026-06-11 15:16:30 | Epoch 050 | Recon Loss: 0.3486 | Time: 23.8s
+2026-06-11 15:16:30 | Saved checkpoint: saved/mae_mask50_encoder.pt
+2026-06-11 15:16:30 | Saved plot: plots/mae_mask50_loss.png
+2026-06-11 15:16:30 | Generating MAE reconstruction visualization ...
+2026-06-11 15:16:31 | Saved reconstruction: plots/mae_mask50_reconstruction.png
+2026-06-11 15:16:31 | Starting MAE linear evaluation ...
+2026-06-11 15:16:42 |   Linear Eval Epoch 1/10 | Train Acc: 35.20%
+2026-06-11 15:16:52 |   Linear Eval Epoch 2/10 | Train Acc: 42.25%
+2026-06-11 15:17:03 |   Linear Eval Epoch 3/10 | Train Acc: 43.91%
+2026-06-11 15:17:13 |   Linear Eval Epoch 4/10 | Train Acc: 44.96%
+2026-06-11 15:17:23 |   Linear Eval Epoch 5/10 | Train Acc: 45.90%
+2026-06-11 15:17:34 |   Linear Eval Epoch 6/10 | Train Acc: 46.36%
+2026-06-11 15:17:44 |   Linear Eval Epoch 7/10 | Train Acc: 46.98%
+2026-06-11 15:17:54 |   Linear Eval Epoch 8/10 | Train Acc: 47.55%
+2026-06-11 15:18:05 |   Linear Eval Epoch 9/10 | Train Acc: 47.77%
+2026-06-11 15:18:15 |   Linear Eval Epoch 10/10 | Train Acc: 48.04%
+2026-06-11 15:18:17 | MAE Linear Eval Test Accuracy: 46.44%
+2026-06-11 15:18:17 | Running t-SNE for MAE (mae_mask50) ...
+2026-06-11 15:18:28 | Saved t-SNE: plots/mae_mask50_tsne.png
+2026-06-11 15:18:28 | Final MAE Linear Eval Accuracy: 46.44%
+2026-06-11 15:18:28 | Done.
