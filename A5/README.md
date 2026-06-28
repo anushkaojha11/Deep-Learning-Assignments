@@ -66,6 +66,3 @@ The MLP outperforms all GNNs by up to 66 percentage points. This is because the 
 ## Discussion: When to Use a GNN Instead of an MLP
 
 Use a GNN when the graph structure itself carries predictive signal that node features alone cannot capture. A concrete example from biology: in protein-protein interaction networks, a protein's function can be inferred from the functions of its interaction partners even when its own sequence features are ambiguous — an MLP would miss this entirely, while a GNN propagates functional signals across interaction edges to resolve ambiguous nodes. Similarly in traffic routing, a road segment's travel time depends on congestion upstream, which is a graph-structural dependency that no per-node feature can encode without message passing.
-
-## Student ID
-jupyter-st126222
