@@ -1,0 +1,153 @@
+[09:07:57] Device: cuda
+[09:07:57] Args: Namespace(model='gcn', hidden=64, epochs=200, lr=0.01, dropout=0.5, heads=8, k=10, ex1=False, ex2=False, ex3=False, all_ex=False, rec=False, seed=42)
+[09:09:32] Device: cuda
+[09:09:32] Args: Namespace(model='gcn', hidden=64, epochs=200, lr=0.01, dropout=0.5, heads=8, k=10, ex1=False, ex2=False, ex3=False, all_ex=False, rec=False, seed=42)
+[09:11:43] Device: cuda
+[09:11:43] Args: Namespace(model='gcn', hidden=64, epochs=200, lr=0.01, dropout=0.5, heads=8, k=10, ex1=False, ex2=False, ex3=False, all_ex=False, rec=False, seed=42)
+[09:12:55] Device: cuda
+[09:12:55] Args: Namespace(model='gcn', hidden=64, epochs=200, lr=0.01, dropout=0.5, heads=8, k=10, ex1=False, ex2=False, ex3=False, all_ex=False, rec=False, seed=42)
+[09:13:57] Device: cuda
+[09:13:57] Args: Namespace(model='gcn', hidden=64, epochs=200, lr=0.01, dropout=0.5, heads=8, k=10, ex1=False, ex2=False, ex3=False, all_ex=False, rec=False, seed=42)
+[09:15:05] Device: cuda
+[09:15:05] Args: Namespace(model='gcn', hidden=64, epochs=200, lr=0.01, dropout=0.5, heads=8, k=10, ex1=False, ex2=False, ex3=False, all_ex=False, rec=False, seed=42)
+[09:16:08] Device: cuda
+[09:16:08] Args: Namespace(model='gcn', hidden=64, epochs=5, lr=0.01, dropout=0.5, heads=8, k=10, ex1=False, ex2=False, ex3=False, all_ex=False, rec=False, seed=42)
+[09:16:08] Device: cuda
+[09:16:08] Args: Namespace(model='gcn', hidden=64, epochs=5, lr=0.01, dropout=0.5, heads=8, k=10, ex1=False, ex2=False, ex3=False, all_ex=False, rec=False, seed=42)
+[09:16:08] Downloading MovieLens-100k...
+[09:16:14] Download complete.
+[09:16:14] Movies: 1682 | Feature dim: 20 | Classes: 19
+[09:16:27] Co-rating edges (>= 5 users): 839,578
+[09:16:28] Split - Train: 267 | Val: 200 | Test: 500
+[09:16:28] Training GCN...
+[09:16:30] [gcn] Test Accuracy: 14.00%
+[09:16:30] Done.
+[09:18:50] Device: cuda
+[09:18:50] Args: Namespace(model='gcn', hidden=64, epochs=200, lr=0.01, dropout=0.5, heads=8, k=10, ex1=False, ex2=False, ex3=False, all_ex=False, rec=False, seed=42)
+[09:18:50] Movies: 1682 | Feature dim: 20 | Classes: 19
+[09:19:03] Co-rating edges (>= 5 users): 839,578
+[09:19:04] Split - Train: 267 | Val: 200 | Test: 500
+[09:19:04] Training GCN...
+[09:19:05] [gcn] Epoch  50 | Loss: 2.5470 | Train: 0.1498 | Val: 0.3200 | Time: 3ms
+[09:19:06] [gcn] Epoch 100 | Loss: 2.4843 | Train: 0.1910 | Val: 0.4650 | Time: 3ms
+[09:19:06] [gcn] Epoch 150 | Loss: 2.4324 | Train: 0.2172 | Val: 0.4150 | Time: 3ms
+[09:19:06] [gcn] Epoch 200 | Loss: 2.3858 | Train: 0.2285 | Val: 0.4600 | Time: 3ms
+[09:19:06] [gcn] Test Accuracy: 30.00%
+[09:19:06] Done.
+[09:19:38] Device: cuda
+[09:19:38] Args: Namespace(model='gat', hidden=64, epochs=200, lr=0.01, dropout=0.5, heads=8, k=10, ex1=False, ex2=False, ex3=False, all_ex=False, rec=False, seed=42)
+[09:19:38] Movies: 1682 | Feature dim: 20 | Classes: 19
+[09:19:52] Co-rating edges (>= 5 users): 839,578
+[09:19:53] Split - Train: 267 | Val: 200 | Test: 500
+[09:19:53] Training GAT...
+[09:19:57] [gat] Epoch  50 | Loss: 2.7528 | Val: 0.0000 | Time: 56ms
+[09:20:00] [gat] Epoch 100 | Loss: 2.6713 | Val: 0.0050 | Time: 56ms
+[09:20:03] [gat] Epoch 150 | Loss: 2.6000 | Val: 0.0050 | Time: 56ms
+[09:20:06] [gat] Epoch 200 | Loss: 2.6310 | Val: 0.0000 | Time: 56ms
+[09:20:06] [gat] Test Accuracy: 1.40%
+[09:20:06] Done.
+[09:26:52] Device: cuda
+[09:26:52] Args: Namespace(model='sage', hidden=64, epochs=200, lr=0.01, dropout=0.5, heads=8, k=10, ex1=False, ex2=False, ex3=False, all_ex=False, rec=False, seed=42)
+[09:26:52] Movies: 1682 | Feature dim: 20 | Classes: 19
+[09:27:06] Co-rating edges (>= 5 users): 839,578
+[09:27:07] Split - Train: 267 | Val: 200 | Test: 500
+[09:27:07] Training GraphSAGE...
+[09:27:57] [sage] Epoch  50 | Loss: 0.9322 | Train: 0.7753 | Val: 0.9500 | Time: 958ms
+[09:28:53] [sage] Epoch 100 | Loss: 0.5298 | Train: 0.8539 | Val: 0.9650 | Time: 1147ms
+[09:29:50] [sage] Epoch 150 | Loss: 0.4889 | Train: 0.8539 | Val: 0.9600 | Time: 1150ms
+[09:30:47] [sage] Epoch 200 | Loss: 0.4842 | Train: 0.8539 | Val: 0.9650 | Time: 1148ms
+[09:30:48] [sage] Test Accuracy: 90.60%
+[09:30:48] Done.
+[09:41:03] Device: cuda
+[09:41:03] Args: Namespace(model='all', hidden=64, epochs=200, lr=0.01, dropout=0.5, heads=8, k=10, ex1=True, ex2=False, ex3=False, all_ex=False, rec=False, seed=42)
+[09:41:03] Movies: 1682 | Feature dim: 20 | Classes: 19
+[09:41:17] Co-rating edges (>= 5 users): 839,578
+[09:41:17] Split - Train: 267 | Val: 200 | Test: 500
+[09:41:17] Training GCN...
+[09:41:19] [gcn] Epoch  50 | Loss: 2.5470 | Train: 0.1498 | Val: 0.3200 | Time: 3ms
+[09:41:19] [gcn] Epoch 100 | Loss: 2.4843 | Train: 0.1910 | Val: 0.4650 | Time: 3ms
+[09:41:19] [gcn] Epoch 150 | Loss: 2.4324 | Train: 0.2172 | Val: 0.4150 | Time: 3ms
+[09:41:19] [gcn] Epoch 200 | Loss: 2.3858 | Train: 0.2285 | Val: 0.4600 | Time: 3ms
+[09:41:19] [gcn] Test Accuracy: 30.00%
+[09:41:19] Training GAT...
+[09:41:22] [gat] Epoch  50 | Loss: 2.7210 | Val: 0.0000 | Time: 56ms
+[09:41:25] [gat] Epoch 100 | Loss: 2.7240 | Val: 0.0000 | Time: 56ms
+[09:41:28] [gat] Epoch 150 | Loss: 2.6769 | Val: 0.0050 | Time: 56ms
+[09:41:31] [gat] Epoch 200 | Loss: 2.5276 | Val: 0.0050 | Time: 56ms
+[09:41:31] [gat] Test Accuracy: 1.20%
+[09:41:31] Training GraphSAGE...
+[09:48:59] Device: cuda
+[09:48:59] Args: Namespace(model='all', hidden=64, epochs=200, lr=0.01, dropout=0.5, heads=8, k=10, ex1=True, ex2=False, ex3=False, all_ex=False, rec=False, seed=42)
+[09:48:59] Movies: 1682 | Feature dim: 20 | Classes: 19
+[09:49:13] Co-rating edges (>= 5 users): 839,578
+[09:49:14] Split - Train: 267 | Val: 200 | Test: 500
+[09:49:14] Training GCN...
+[09:49:15] [gcn] Epoch  50 | Loss: 2.5470 | Train: 0.1498 | Val: 0.3200 | Time: 3ms
+[09:49:16] [gcn] Epoch 100 | Loss: 2.4843 | Train: 0.1910 | Val: 0.4650 | Time: 3ms
+[09:49:16] [gcn] Epoch 150 | Loss: 2.4324 | Train: 0.2172 | Val: 0.4150 | Time: 3ms
+[09:49:16] [gcn] Epoch 200 | Loss: 2.3858 | Train: 0.2285 | Val: 0.4600 | Time: 3ms
+[09:49:16] [gcn] Test Accuracy: 30.00%
+[09:49:16] Training GAT...
+[09:49:19] [gat] Epoch  50 | Loss: 2.7210 | Val: 0.0000 | Time: 56ms
+[09:49:22] [gat] Epoch 100 | Loss: 2.7240 | Val: 0.0000 | Time: 56ms
+[09:49:24] [gat] Epoch 150 | Loss: 2.6769 | Val: 0.0050 | Time: 56ms
+[09:49:27] [gat] Epoch 200 | Loss: 2.5276 | Val: 0.0050 | Time: 56ms
+[09:49:27] [gat] Test Accuracy: 1.20%
+[09:49:27] Training GraphSAGE...
+[09:50:26] [sage] Epoch  50 | Loss: 0.4729 | Train: 0.9213 | Val: 0.9550 | Time: 1159ms
+[09:51:24] [sage] Epoch 100 | Loss: 0.2793 | Train: 0.9476 | Val: 0.9450 | Time: 1158ms
+[09:52:22] [sage] Epoch 150 | Loss: 0.2089 | Train: 0.9513 | Val: 0.9550 | Time: 1160ms
+[09:53:19] [sage] Epoch 200 | Loss: 0.2081 | Train: 0.9513 | Val: 0.9550 | Time: 1156ms
+[09:53:20] [sage] Test Accuracy: 95.40%
+[09:53:20] === Exercise 1: Over-smoothing Analysis ===
+[09:53:20] [gcn-L1] Epoch  50 | Loss: 2.6614 | Train: 0.1536 | Val: 0.3050 | Time: 3ms
+[09:53:20] [gcn-L1] Epoch 100 | Loss: 2.5815 | Train: 0.1910 | Val: 0.2900 | Time: 3ms
+[09:53:20] [gcn-L1] Epoch 150 | Loss: 2.5302 | Train: 0.2210 | Val: 0.2700 | Time: 3ms
+[09:53:20] [gcn-L1] Epoch 200 | Loss: 2.4952 | Train: 0.2397 | Val: 0.2700 | Time: 3ms
+[09:53:20] [gcn-L1] Test Accuracy: 28.60%
+[09:53:20]   Layers=1 | Test Acc: 28.60% | Avg Cosine Sim: 0.9631
+[09:53:21] [gcn-L2] Epoch  50 | Loss: 2.5301 | Train: 0.1760 | Val: 0.3800 | Time: 5ms
+[09:53:21] [gcn-L2] Epoch 100 | Loss: 2.4605 | Train: 0.2135 | Val: 0.4850 | Time: 5ms
+[09:53:21] [gcn-L2] Epoch 150 | Loss: 2.4104 | Train: 0.2247 | Val: 0.5250 | Time: 5ms
+[09:53:22] [gcn-L2] Epoch 200 | Loss: 2.3743 | Train: 0.2622 | Val: 0.4900 | Time: 5ms
+[09:53:22] [gcn-L2] Test Accuracy: 31.00%
+[09:53:22]   Layers=2 | Test Acc: 31.00% | Avg Cosine Sim: 0.9054
+[09:53:22] [gcn-L3] Epoch  50 | Loss: 2.5530 | Train: 0.1423 | Val: 0.3300 | Time: 5ms
+[09:53:22] [gcn-L3] Epoch 100 | Loss: 2.5537 | Train: 0.1648 | Val: 0.2900 | Time: 5ms
+[09:53:22] [gcn-L3] Epoch 150 | Loss: 2.5414 | Train: 0.1685 | Val: 0.0000 | Time: 6ms
+[09:53:23] [gcn-L3] Epoch 200 | Loss: 2.5146 | Train: 0.1648 | Val: 0.0800 | Time: 6ms
+[09:53:23] [gcn-L3] Test Accuracy: 4.80%
+[09:53:23]   Layers=3 | Test Acc: 4.80% | Avg Cosine Sim: 0.9730
+[09:53:23] [gcn-L4] Epoch  50 | Loss: 2.5676 | Train: 0.1348 | Val: 0.3350 | Time: 6ms
+[09:53:23] [gcn-L4] Epoch 100 | Loss: 2.5608 | Train: 0.1348 | Val: 0.3350 | Time: 7ms
+[09:53:24] [gcn-L4] Epoch 150 | Loss: 2.5452 | Train: 0.1348 | Val: 0.3350 | Time: 8ms
+[09:53:24] [gcn-L4] Epoch 200 | Loss: 2.5528 | Train: 0.1348 | Val: 0.2650 | Time: 8ms
+[09:53:24] [gcn-L4] Test Accuracy: 29.40%
+[09:53:24]   Layers=4 | Test Acc: 29.40% | Avg Cosine Sim: 0.9894
+[09:53:25] [gcn-L5] Epoch  50 | Loss: 2.5824 | Train: 0.1311 | Val: 0.0050 | Time: 8ms
+[09:53:25] [gcn-L5] Epoch 100 | Loss: 2.5654 | Train: 0.1311 | Val: 0.3350 | Time: 9ms
+[09:53:26] [gcn-L5] Epoch 150 | Loss: 2.5496 | Train: 0.1348 | Val: 0.0050 | Time: 9ms
+[09:53:26] [gcn-L5] Epoch 200 | Loss: 2.5509 | Train: 0.1348 | Val: 0.3350 | Time: 9ms
+[09:53:26] [gcn-L5] Test Accuracy: 19.80%
+[09:53:26]   Layers=5 | Test Acc: 19.80% | Avg Cosine Sim: 0.9906
+[09:53:26] Saved plots/ex1_oversmoothing.png
+[09:53:26] === Exercise 2: Model Comparison + Attention Visualization ===
+[09:53:26] Model Comparison:
+[09:53:26]   GCN       | Test Acc: 30.00% | Avg epoch: 5ms
+[09:53:26]   GAT       | Test Acc: 1.20% | Avg epoch: 56ms
+[09:53:26]   GraphSAGE | Test Acc: 95.40% | Avg epoch: 1162ms
+[09:53:48] Saved plots/ex2_tsne_comparison.png
+[09:53:48] Saved plots/ex2_attention.png
+[09:53:48] === Exercise 3: MLP Baseline ===
+[09:53:48] [mlp] Epoch  50 | Loss: 0.1937 | Val: 0.9550 | Time: 4ms
+[09:53:48] [mlp] Epoch 100 | Loss: 0.0685 | Val: 0.9450 | Time: 5ms
+[09:53:49] [mlp] Epoch 150 | Loss: 0.0538 | Val: 0.9450 | Time: 5ms
+[09:53:49] [mlp] Epoch 200 | Loss: 0.0398 | Val: 0.9500 | Time: 5ms
+[09:53:49] [mlp] Test Accuracy: 96.20%
+[09:53:49] Final Comparison:
+[09:53:49]   MLP (no graph) | Test Acc: 96.20%
+[09:53:49]   GCN            | Test Acc: 30.00%
+[09:53:49]   GAT            | Test Acc: 1.20%
+[09:53:49]   GraphSAGE      | Test Acc: 95.40%
+[09:53:49]   Best GNN gain over MLP: -0.80pp
+[09:53:49] Done.
