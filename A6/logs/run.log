@@ -1,0 +1,890 @@
+2026-06-28 06:15:09,966 | Vocabulary size: 41
+2026-06-28 06:15:09,966 | 
+Sentence                                       #Char  #Total Accent Tag
+2026-06-28 06:15:09,966 | ---------------------------------------------------------------------------
+2026-06-28 06:15:09,967 | Hello, how are you?                               19      21   — (id=—)
+2026-06-28 06:15:09,967 | Dr. Smith prescribed 10 tablets.                  36      38   — (id=—)
+2026-06-28 06:15:09,967 | [EN-US] I got the job!                            14      17   [EN-US] (id=36)
+2026-06-28 06:15:09,967 | [EN-BR] I lost my wallet.                         17      20   [EN-BR] (id=37)
+2026-06-28 06:15:09,967 | [EN-INDIA] This is completely unacceptable!       32      35   [EN-INDIA] (id=38)
+2026-06-28 06:15:09,967 | 
+--- Detail: '[EN-US] I got the job!' ---
+2026-06-28 06:15:09,967 | IDs:     [1, 36, 18, 3, 16, 24, 29, 3, 29, 17, 14, 3, 19, 24, 11, 4, 2]
+2026-06-28 06:15:09,967 | Decoded: [EN-US]i got the job!
+2026-06-28 06:15:09,967 | [EN-US] = single token ID 36
+2026-06-28 06:15:20,473 | === Part 2: Mel Spectrogram ===
+2026-06-28 06:15:20,474 |   Downloading sample WAV...
+2026-06-28 06:15:43,771 | === Part 2: Mel Spectrogram ===
+2026-06-28 06:15:43,772 |   Loaded waveform: torch.Size([1, 54400]), sample_rate=16000
+2026-06-28 06:15:43,781 |   Mel spectrogram shape: torch.Size([80, 213])  (80 bins x 213 frames)
+2026-06-28 06:15:44,336 |   Plot saved to plots/mel_spectrogram.png
+2026-06-28 06:15:56,590 | === Part 3: CTC ===
+2026-06-28 06:15:56,590 | 
+-- Collapsing function --
+2026-06-28 06:15:56,590 |   HHEELLLLOO             -> HELO
+2026-06-28 06:15:56,590 |   H_EE_LL_LO             -> HELLO
+2026-06-28 06:15:56,590 |   H_E_L_L_O              -> HELLO
+2026-06-28 06:15:56,590 |   HHHHEEEELLLLLLOOOO     -> HELO
+2026-06-28 06:15:56,590 | 
+-- Forward algorithm (Exercise 2b) --
+2026-06-28 06:15:56,597 |   log P_CTC('HEL') = -5.5957   P = 0.003714
+2026-06-28 06:15:56,598 |   log P_CTC('LEH') = -7.0833   P = 0.000839
+2026-06-28 06:15:56,598 | 
+-- Training TinyCTCModel for 300 steps --
+2026-06-28 06:15:58,284 |   Step  50 | loss: 2.2064 | CER: 90.9%
+2026-06-28 06:15:58,975 |   Step 100 | loss: 0.6361 | CER: 43.7%
+2026-06-28 06:15:59,669 |   Step 150 | loss: 0.2362 | CER: 12.0%
+2026-06-28 06:16:00,254 |   Step 200 | loss: 0.1242 | CER: 4.5%
+2026-06-28 06:16:00,775 |   Step 250 | loss: 0.0587 | CER: 2.4%
+2026-06-28 06:16:01,292 |   Step 300 | loss: 0.0212 | CER: 0.0%
+2026-06-28 06:16:01,292 | 
+  CER first dropped below 10% at step: 90
+2026-06-28 06:16:01,344 |   Model saved to saved/ctc_model.pth
+2026-06-28 06:16:01,683 |   Plot saved to plots/ctc_training.png
+2026-06-28 06:16:02,409 |   Decoding grid saved to plots/ctc_decoding.png
+2026-06-28 06:16:16,758 | === Part 4: wav2vec2 Linear Probe ===
+2026-06-28 06:16:16,758 |   Classes: ['yes', 'no', 'stop', 'go']  (40 clips/class)
+2026-06-28 06:16:16,758 |   Loading pretrained facebook/wav2vec2-base...
+2026-06-28 06:16:17,238 | HTTP Request: GET https://huggingface.co/api/agent-harnesses "HTTP/1.1 200 OK"
+2026-06-28 06:16:17,503 | HTTP Request: HEAD https://huggingface.co/facebook/wav2vec2-base/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+2026-06-28 06:16:17,768 | HTTP Request: HEAD https://huggingface.co/facebook/wav2vec2-base/resolve/main/preprocessor_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 06:16:17,769 | Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-06-28 06:16:17,806 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/facebook/wav2vec2-base/0b5b8e868dd84f03fd87d01f9c4ff0f080fecfe8/preprocessor_config.json "HTTP/1.1 200 OK"
+2026-06-28 06:16:17,843 | HTTP Request: GET https://huggingface.co/api/resolve-cache/models/facebook/wav2vec2-base/0b5b8e868dd84f03fd87d01f9c4ff0f080fecfe8/preprocessor_config.json "HTTP/1.1 200 OK"
+2026-06-28 06:16:18,117 | HTTP Request: HEAD https://huggingface.co/facebook/wav2vec2-base/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 06:16:18,152 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/facebook/wav2vec2-base/0b5b8e868dd84f03fd87d01f9c4ff0f080fecfe8/config.json "HTTP/1.1 200 OK"
+2026-06-28 06:16:18,189 | HTTP Request: GET https://huggingface.co/api/resolve-cache/models/facebook/wav2vec2-base/0b5b8e868dd84f03fd87d01f9c4ff0f080fecfe8/config.json "HTTP/1.1 200 OK"
+2026-06-28 06:16:18,464 | HTTP Request: HEAD https://huggingface.co/facebook/wav2vec2-base/resolve/main/model.safetensors "HTTP/1.1 404 Not Found"
+2026-06-28 06:16:18,732 | HTTP Request: HEAD https://huggingface.co/facebook/wav2vec2-base/resolve/main/model.safetensors.index.json "HTTP/1.1 404 Not Found"
+2026-06-28 06:16:18,994 | HTTP Request: HEAD https://huggingface.co/facebook/wav2vec2-base/resolve/main/pytorch_model.bin "HTTP/1.1 302 Found"
+2026-06-28 06:16:25,921 | HTTP Request: HEAD https://huggingface.co/facebook/wav2vec2-base/resolve/main/model.safetensors "HTTP/1.1 404 Not Found"
+2026-06-28 06:16:26,204 | HTTP Request: GET https://huggingface.co/api/models/facebook/wav2vec2-base "HTTP/1.1 200 OK"
+2026-06-28 06:16:26,555 | HTTP Request: GET https://huggingface.co/api/models/facebook/wav2vec2-base/commits/main "HTTP/1.1 200 OK"
+2026-06-28 06:16:26,835 | HTTP Request: GET https://huggingface.co/api/models/facebook/wav2vec2-base/discussions?p=0 "HTTP/1.1 200 OK"
+2026-06-28 06:16:27,104 | HTTP Request: GET https://huggingface.co/api/models/facebook/wav2vec2-base/commits/refs%2Fpr%2F11 "HTTP/1.1 200 OK"
+2026-06-28 06:16:27,375 | HTTP Request: HEAD https://huggingface.co/facebook/wav2vec2-base/resolve/refs%2Fpr%2F11/model.safetensors.index.json "HTTP/1.1 404 Not Found"
+2026-06-28 06:16:27,650 | HTTP Request: HEAD https://huggingface.co/facebook/wav2vec2-base/resolve/refs%2Fpr%2F11/model.safetensors "HTTP/1.1 302 Found"
+2026-06-28 06:17:36,813 | === Part 4: wav2vec2 Linear Probe ===
+2026-06-28 06:17:36,813 |   Classes: ['yes', 'no', 'stop', 'go']  (40 clips/class)
+2026-06-28 06:17:36,813 |   Loading pretrained facebook/wav2vec2-base...
+2026-06-28 06:17:37,209 | HTTP Request: HEAD https://huggingface.co/facebook/wav2vec2-base/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+2026-06-28 06:17:37,210 | Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-06-28 06:17:37,475 | HTTP Request: HEAD https://huggingface.co/facebook/wav2vec2-base/resolve/main/preprocessor_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 06:17:37,509 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/facebook/wav2vec2-base/0b5b8e868dd84f03fd87d01f9c4ff0f080fecfe8/preprocessor_config.json "HTTP/1.1 200 OK"
+2026-06-28 06:17:37,765 | HTTP Request: HEAD https://huggingface.co/facebook/wav2vec2-base/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 06:17:37,799 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/facebook/wav2vec2-base/0b5b8e868dd84f03fd87d01f9c4ff0f080fecfe8/config.json "HTTP/1.1 200 OK"
+2026-06-28 06:17:38,067 | HTTP Request: HEAD https://huggingface.co/facebook/wav2vec2-base/resolve/main/model.safetensors "HTTP/1.1 404 Not Found"
+2026-06-28 06:17:38,356 | HTTP Request: HEAD https://huggingface.co/facebook/wav2vec2-base/resolve/main/model.safetensors.index.json "HTTP/1.1 404 Not Found"
+2026-06-28 06:17:38,628 | HTTP Request: HEAD https://huggingface.co/facebook/wav2vec2-base/resolve/main/pytorch_model.bin "HTTP/1.1 302 Found"
+2026-06-28 06:17:38,923 | HTTP Request: HEAD https://huggingface.co/facebook/wav2vec2-base/resolve/main/model.safetensors "HTTP/1.1 404 Not Found"
+2026-06-28 06:17:39,193 | HTTP Request: GET https://huggingface.co/api/models/facebook/wav2vec2-base "HTTP/1.1 200 OK"
+2026-06-28 06:17:39,479 | HTTP Request: GET https://huggingface.co/api/models/facebook/wav2vec2-base/commits/main "HTTP/1.1 200 OK"
+2026-06-28 06:17:39,767 | HTTP Request: GET https://huggingface.co/api/models/facebook/wav2vec2-base/discussions?p=0 "HTTP/1.1 200 OK"
+2026-06-28 06:17:40,038 | HTTP Request: GET https://huggingface.co/api/models/facebook/wav2vec2-base/commits/refs%2Fpr%2F11 "HTTP/1.1 200 OK"
+2026-06-28 06:17:40,303 | HTTP Request: HEAD https://huggingface.co/facebook/wav2vec2-base/resolve/refs%2Fpr%2F11/model.safetensors.index.json "HTTP/1.1 404 Not Found"
+2026-06-28 06:17:40,644 | HTTP Request: HEAD https://huggingface.co/facebook/wav2vec2-base/resolve/refs%2Fpr%2F11/model.safetensors "HTTP/1.1 302 Found"
+2026-06-28 06:19:00,617 | === Part 4: wav2vec2 Linear Probe ===
+2026-06-28 06:19:00,617 |   Classes: ['yes', 'no', 'stop', 'go']  (40 clips/class)
+2026-06-28 06:19:00,617 |   Loading pretrained patrickvonplaten/wav2vec2-base-v2...
+2026-06-28 06:19:01,030 | HTTP Request: HEAD https://huggingface.co/patrickvonplaten/wav2vec2-base-v2/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+2026-06-28 06:19:01,030 | Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-06-28 06:19:01,303 | HTTP Request: HEAD https://huggingface.co/patrickvonplaten/wav2vec2-base-v2/resolve/main/preprocessor_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 06:19:01,573 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/patrickvonplaten/wav2vec2-base-v2/9371f1849947b4613f451680a8e96d907617ce86/preprocessor_config.json "HTTP/1.1 200 OK"
+2026-06-28 06:19:01,850 | HTTP Request: GET https://huggingface.co/api/resolve-cache/models/patrickvonplaten/wav2vec2-base-v2/9371f1849947b4613f451680a8e96d907617ce86/preprocessor_config.json "HTTP/1.1 200 OK"
+2026-06-28 06:19:02,118 | HTTP Request: HEAD https://huggingface.co/patrickvonplaten/wav2vec2-base-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 06:19:02,385 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/patrickvonplaten/wav2vec2-base-v2/9371f1849947b4613f451680a8e96d907617ce86/config.json "HTTP/1.1 200 OK"
+2026-06-28 06:19:02,651 | HTTP Request: GET https://huggingface.co/api/resolve-cache/models/patrickvonplaten/wav2vec2-base-v2/9371f1849947b4613f451680a8e96d907617ce86/config.json "HTTP/1.1 200 OK"
+2026-06-28 06:19:02,937 | HTTP Request: HEAD https://huggingface.co/patrickvonplaten/wav2vec2-base-v2/resolve/main/model.safetensors "HTTP/1.1 404 Not Found"
+2026-06-28 06:19:03,204 | HTTP Request: HEAD https://huggingface.co/patrickvonplaten/wav2vec2-base-v2/resolve/main/model.safetensors.index.json "HTTP/1.1 404 Not Found"
+2026-06-28 06:19:03,536 | HTTP Request: HEAD https://huggingface.co/patrickvonplaten/wav2vec2-base-v2/resolve/main/pytorch_model.bin "HTTP/1.1 404 Not Found"
+2026-06-28 06:19:03,813 | HTTP Request: HEAD https://huggingface.co/patrickvonplaten/wav2vec2-base-v2/resolve/main/pytorch_model.bin.index.json "HTTP/1.1 404 Not Found"
+2026-06-28 06:20:16,302 | === Part 4: wav2vec2 Linear Probe ===
+2026-06-28 06:20:16,302 |   Classes: ['yes', 'no', 'stop', 'go']  (40 clips/class)
+2026-06-28 06:20:16,302 |   Loading pretrained facebook/wav2vec2-base...
+2026-06-28 06:20:16,641 | HTTP Request: HEAD https://huggingface.co/facebook/wav2vec2-base/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+2026-06-28 06:20:16,642 | Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-06-28 06:20:16,908 | HTTP Request: HEAD https://huggingface.co/facebook/wav2vec2-base/resolve/main/preprocessor_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 06:20:16,941 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/facebook/wav2vec2-base/0b5b8e868dd84f03fd87d01f9c4ff0f080fecfe8/preprocessor_config.json "HTTP/1.1 200 OK"
+2026-06-28 06:20:17,203 | HTTP Request: HEAD https://huggingface.co/facebook/wav2vec2-base/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 06:20:17,237 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/facebook/wav2vec2-base/0b5b8e868dd84f03fd87d01f9c4ff0f080fecfe8/config.json "HTTP/1.1 200 OK"
+2026-06-28 06:20:17,500 | HTTP Request: HEAD https://huggingface.co/facebook/wav2vec2-base/resolve/main/model.safetensors "HTTP/1.1 404 Not Found"
+2026-06-28 06:20:17,764 | HTTP Request: HEAD https://huggingface.co/facebook/wav2vec2-base/resolve/main/model.safetensors.index.json "HTTP/1.1 404 Not Found"
+2026-06-28 06:20:18,042 | HTTP Request: HEAD https://huggingface.co/facebook/wav2vec2-base/resolve/main/pytorch_model.bin "HTTP/1.1 302 Found"
+2026-06-28 06:20:18,304 | HTTP Request: HEAD https://huggingface.co/facebook/wav2vec2-base/resolve/main/model.safetensors "HTTP/1.1 404 Not Found"
+2026-06-28 06:20:18,570 | HTTP Request: GET https://huggingface.co/api/models/facebook/wav2vec2-base "HTTP/1.1 200 OK"
+2026-06-28 06:20:18,842 | HTTP Request: GET https://huggingface.co/api/models/facebook/wav2vec2-base/commits/main "HTTP/1.1 200 OK"
+2026-06-28 06:20:19,131 | HTTP Request: GET https://huggingface.co/api/models/facebook/wav2vec2-base/discussions?p=0 "HTTP/1.1 200 OK"
+2026-06-28 06:20:19,407 | HTTP Request: GET https://huggingface.co/api/models/facebook/wav2vec2-base/commits/refs%2Fpr%2F11 "HTTP/1.1 200 OK"
+2026-06-28 06:20:19,680 | HTTP Request: HEAD https://huggingface.co/facebook/wav2vec2-base/resolve/refs%2Fpr%2F11/model.safetensors.index.json "HTTP/1.1 404 Not Found"
+2026-06-28 06:20:19,988 | HTTP Request: HEAD https://huggingface.co/facebook/wav2vec2-base/resolve/refs%2Fpr%2F11/model.safetensors "HTTP/1.1 302 Found"
+2026-06-28 06:21:06,301 | === Part 4: wav2vec2 Linear Probe ===
+2026-06-28 06:21:06,301 |   Classes: ['yes', 'no', 'stop', 'go']  (40 clips/class)
+2026-06-28 06:21:06,301 |   Loading pretrained facebook/wav2vec2-base...
+2026-06-28 06:21:06,647 | HTTP Request: HEAD https://huggingface.co/facebook/wav2vec2-base/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+2026-06-28 06:21:06,916 | HTTP Request: HEAD https://huggingface.co/facebook/wav2vec2-base/resolve/main/preprocessor_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 06:21:06,917 | Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-06-28 06:21:06,949 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/facebook/wav2vec2-base/0b5b8e868dd84f03fd87d01f9c4ff0f080fecfe8/preprocessor_config.json "HTTP/1.1 200 OK"
+2026-06-28 06:21:07,221 | HTTP Request: HEAD https://huggingface.co/facebook/wav2vec2-base/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 06:21:07,255 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/facebook/wav2vec2-base/0b5b8e868dd84f03fd87d01f9c4ff0f080fecfe8/config.json "HTTP/1.1 200 OK"
+2026-06-28 06:21:07,528 | HTTP Request: HEAD https://huggingface.co/facebook/wav2vec2-base/resolve/main/model.safetensors "HTTP/1.1 404 Not Found"
+2026-06-28 06:21:07,787 | HTTP Request: HEAD https://huggingface.co/facebook/wav2vec2-base/resolve/main/model.safetensors.index.json "HTTP/1.1 404 Not Found"
+2026-06-28 06:21:08,056 | HTTP Request: HEAD https://huggingface.co/facebook/wav2vec2-base/resolve/main/pytorch_model.bin "HTTP/1.1 302 Found"
+2026-06-28 06:21:08,317 | HTTP Request: HEAD https://huggingface.co/facebook/wav2vec2-base/resolve/main/model.safetensors "HTTP/1.1 404 Not Found"
+2026-06-28 06:21:08,576 | HTTP Request: GET https://huggingface.co/api/models/facebook/wav2vec2-base "HTTP/1.1 200 OK"
+2026-06-28 06:21:08,851 | HTTP Request: GET https://huggingface.co/api/models/facebook/wav2vec2-base/commits/main "HTTP/1.1 200 OK"
+2026-06-28 06:21:09,140 | HTTP Request: GET https://huggingface.co/api/models/facebook/wav2vec2-base/discussions?p=0 "HTTP/1.1 200 OK"
+2026-06-28 06:21:09,415 | HTTP Request: GET https://huggingface.co/api/models/facebook/wav2vec2-base/commits/refs%2Fpr%2F11 "HTTP/1.1 200 OK"
+2026-06-28 06:21:09,687 | HTTP Request: HEAD https://huggingface.co/facebook/wav2vec2-base/resolve/refs%2Fpr%2F11/model.safetensors.index.json "HTTP/1.1 404 Not Found"
+2026-06-28 06:21:09,964 | HTTP Request: HEAD https://huggingface.co/facebook/wav2vec2-base/resolve/refs%2Fpr%2F11/model.safetensors "HTTP/1.1 302 Found"
+2026-06-28 06:22:27,800 | === Part 4: wav2vec2 Linear Probe ===
+2026-06-28 06:22:27,800 |   Classes: ['yes', 'no', 'stop', 'go']  (40 clips/class)
+2026-06-28 06:22:27,801 |   Loading pretrained /home/jupyter-st126222/.cache/huggingface/hub/models--facebook--wav2vec2 base/snapshots/0b5b8e868dd84f03fd87d01f9c4ff0f080fecfe8...
+2026-06-28 06:23:54,630 | === Part 4: wav2vec2 Linear Probe ===
+2026-06-28 06:23:54,630 |   Classes: ['yes', 'no', 'stop', 'go']  (40 clips/class)
+2026-06-28 06:23:54,630 |   Loading pretrained /home/jupyter-st126222/.cache/huggingface/hub/models--facebook--wav2vec2-base/snapshots/0b5b8e868dd84f03fd87d01f9c4ff0f080fecfe8...
+2026-06-28 06:23:55,178 |   Loaded 94,371,712 frozen parameters
+2026-06-28 06:23:55,178 |   Loading SpeechCommands dataset...
+2026-06-28 06:27:55,113 |   Extracting frozen wav2vec2 features...
+2026-06-28 06:27:56,984 |   Features: 160 clips x 768 dims
+2026-06-28 06:27:56,984 |   Extracting raw mel-spectrogram baseline features...
+2026-06-28 06:27:57,354 |   [raw mel-spectrogram] test accuracy: 68.8%  (random baseline: 25.0%)
+2026-06-28 06:27:57,548 |   [wav2vec2 frozen] test accuracy: 85.4%  (random baseline: 25.0%)
+2026-06-28 06:27:57,548 |   wav2vec2 improvement over mel baseline: +16.7%
+2026-06-28 06:27:57,548 |   Running t-SNE...
+2026-06-28 06:27:58,833 |   Plot saved to plots/wav2vec2_probe.png
+2026-06-28 06:30:42,594 | === Part 4: wav2vec2 Linear Probe ===
+2026-06-28 06:30:42,594 |   Classes: ['yes', 'no', 'stop', 'go', 'up', 'down']  (40 clips/class)
+2026-06-28 06:30:42,594 |   Loading pretrained /home/jupyter-st126222/.cache/huggingface/hub/models--facebook--wav2vec2-base/snapshots/0b5b8e868dd84f03fd87d01f9c4ff0f080fecfe8...
+2026-06-28 06:30:43,140 |   Loaded 94,371,712 frozen parameters
+2026-06-28 06:30:43,140 |   Loading SpeechCommands dataset...
+2026-06-28 06:31:03,641 |   Extracting frozen wav2vec2 features...
+2026-06-28 06:31:06,246 |   Features: 240 clips x 768 dims
+2026-06-28 06:31:06,246 |   Extracting raw mel-spectrogram baseline features...
+2026-06-28 06:31:06,749 |   [raw mel-spectrogram] test accuracy: 51.4%  (random baseline: 16.7%)
+2026-06-28 06:31:06,882 |   [wav2vec2 frozen] test accuracy: 73.6%  (random baseline: 16.7%)
+2026-06-28 06:31:06,882 |   wav2vec2 improvement over mel baseline: +22.2%
+2026-06-28 06:31:06,882 |   Running t-SNE...
+2026-06-28 06:31:08,982 |   Plot saved to plots/wav2vec2_probe.png
+2026-06-28 06:40:27,200 | === Part 5: Voice Cloning (OpenVoice) ===
+2026-06-28 06:40:27,200 |   Installing OpenVoice...
+2026-06-28 06:46:16,130 | === Part 5: Voice Cloning (OpenVoice) ===
+2026-06-28 06:46:17,724 |   Installing OpenVoice...
+2026-06-28 06:48:14,143 | === Part 5: Voice Cloning (OpenVoice) ===
+2026-06-28 06:48:48,626 | === Part 5: Voice Cloning (OpenVoice) ===
+2026-06-28 06:49:26,139 | === Part 5: Voice Cloning (OpenVoice) ===
+2026-06-28 06:50:00,727 | === Part 5: Voice Cloning (OpenVoice) ===
+2026-06-28 06:50:28,818 | === Part 5: Voice Cloning (OpenVoice) ===
+2026-06-28 06:50:57,699 | === Part 5: Voice Cloning (OpenVoice) ===
+2026-06-28 06:51:25,905 | === Part 5: Voice Cloning (OpenVoice) ===
+2026-06-28 06:51:46,902 | === Part 5: Voice Cloning (OpenVoice) ===
+2026-06-28 06:51:53,796 | HTTP Request: HEAD https://huggingface.co/tohoku-nlp/bert-base-japanese-v3/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 06:51:53,798 | Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-06-28 06:51:53,832 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/tohoku-nlp/bert-base-japanese-v3/65243d6e5629b969c77309f217bd7b1a79d43c7e/config.json "HTTP/1.1 200 OK"
+2026-06-28 06:51:53,870 | HTTP Request: GET https://huggingface.co/api/resolve-cache/models/tohoku-nlp/bert-base-japanese-v3/65243d6e5629b969c77309f217bd7b1a79d43c7e/config.json "HTTP/1.1 200 OK"
+2026-06-28 06:51:54,160 | HTTP Request: HEAD https://huggingface.co/tohoku-nlp/bert-base-japanese-v3/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 06:51:54,194 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/tohoku-nlp/bert-base-japanese-v3/65243d6e5629b969c77309f217bd7b1a79d43c7e/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 06:51:54,230 | HTTP Request: GET https://huggingface.co/api/resolve-cache/models/tohoku-nlp/bert-base-japanese-v3/65243d6e5629b969c77309f217bd7b1a79d43c7e/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 06:51:54,502 | HTTP Request: HEAD https://huggingface.co/tohoku-nlp/bert-base-japanese-v3/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 06:51:54,536 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/tohoku-nlp/bert-base-japanese-v3/65243d6e5629b969c77309f217bd7b1a79d43c7e/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 06:51:54,796 | HTTP Request: GET https://huggingface.co/api/models/tohoku-nlp/bert-base-japanese-v3/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 06:51:55,065 | HTTP Request: GET https://huggingface.co/api/models/tohoku-nlp/bert-base-japanese-v3/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 06:51:55,334 | HTTP Request: HEAD https://huggingface.co/tohoku-nlp/bert-base-japanese-v3/resolve/main/vocab.txt "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 06:51:55,369 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/tohoku-nlp/bert-base-japanese-v3/65243d6e5629b969c77309f217bd7b1a79d43c7e/vocab.txt "HTTP/1.1 200 OK"
+2026-06-28 06:51:55,404 | HTTP Request: GET https://huggingface.co/api/resolve-cache/models/tohoku-nlp/bert-base-japanese-v3/65243d6e5629b969c77309f217bd7b1a79d43c7e/vocab.txt "HTTP/1.1 200 OK"
+2026-06-28 06:51:55,725 | HTTP Request: HEAD https://huggingface.co/tohoku-nlp/bert-base-japanese-v3/resolve/main/spiece.model "HTTP/1.1 404 Not Found"
+2026-06-28 06:51:55,995 | HTTP Request: HEAD https://huggingface.co/tohoku-nlp/bert-base-japanese-v3/resolve/main/added_tokens.json "HTTP/1.1 404 Not Found"
+2026-06-28 06:51:56,265 | HTTP Request: HEAD https://huggingface.co/tohoku-nlp/bert-base-japanese-v3/resolve/main/special_tokens_map.json "HTTP/1.1 404 Not Found"
+2026-06-28 06:51:56,534 | HTTP Request: HEAD https://huggingface.co/tohoku-nlp/bert-base-japanese-v3/resolve/main/tokenizer.json "HTTP/1.1 404 Not Found"
+2026-06-28 06:51:56,811 | HTTP Request: HEAD https://huggingface.co/tohoku-nlp/bert-base-japanese-v3/resolve/main/chat_template.jinja "HTTP/1.1 404 Not Found"
+2026-06-28 06:52:34,391 | === Part 5: Voice Cloning (OpenVoice) ===
+2026-06-28 06:52:41,346 | HTTP Request: HEAD https://huggingface.co/tohoku-nlp/bert-base-japanese-v3/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 06:52:41,378 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/tohoku-nlp/bert-base-japanese-v3/65243d6e5629b969c77309f217bd7b1a79d43c7e/config.json "HTTP/1.1 200 OK"
+2026-06-28 06:52:41,642 | HTTP Request: HEAD https://huggingface.co/tohoku-nlp/bert-base-japanese-v3/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 06:52:41,675 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/tohoku-nlp/bert-base-japanese-v3/65243d6e5629b969c77309f217bd7b1a79d43c7e/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 06:52:41,937 | HTTP Request: HEAD https://huggingface.co/tohoku-nlp/bert-base-japanese-v3/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 06:52:41,972 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/tohoku-nlp/bert-base-japanese-v3/65243d6e5629b969c77309f217bd7b1a79d43c7e/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 06:52:42,244 | HTTP Request: GET https://huggingface.co/api/models/tohoku-nlp/bert-base-japanese-v3/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 06:52:42,509 | HTTP Request: GET https://huggingface.co/api/models/tohoku-nlp/bert-base-japanese-v3/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 06:53:24,377 | === Part 5: Voice Cloning (OpenVoice) ===
+2026-06-28 06:53:31,076 | HTTP Request: HEAD https://huggingface.co/tohoku-nlp/bert-base-japanese-v3/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 06:53:31,076 | Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-06-28 06:53:31,111 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/tohoku-nlp/bert-base-japanese-v3/65243d6e5629b969c77309f217bd7b1a79d43c7e/config.json "HTTP/1.1 200 OK"
+2026-06-28 06:53:31,383 | HTTP Request: HEAD https://huggingface.co/tohoku-nlp/bert-base-japanese-v3/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 06:53:31,416 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/tohoku-nlp/bert-base-japanese-v3/65243d6e5629b969c77309f217bd7b1a79d43c7e/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 06:53:31,909 | HTTP Request: HEAD https://huggingface.co/tohoku-nlp/bert-base-japanese-v3/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 06:53:31,942 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/tohoku-nlp/bert-base-japanese-v3/65243d6e5629b969c77309f217bd7b1a79d43c7e/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 06:53:32,207 | HTTP Request: GET https://huggingface.co/api/models/tohoku-nlp/bert-base-japanese-v3/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 06:53:32,468 | HTTP Request: GET https://huggingface.co/api/models/tohoku-nlp/bert-base-japanese-v3/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 06:53:54,886 | === Part 5: Voice Cloning (OpenVoice) ===
+2026-06-28 06:54:01,577 | HTTP Request: HEAD https://huggingface.co/tohoku-nlp/bert-base-japanese-v3/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 06:54:01,611 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/tohoku-nlp/bert-base-japanese-v3/65243d6e5629b969c77309f217bd7b1a79d43c7e/config.json "HTTP/1.1 200 OK"
+2026-06-28 06:54:01,883 | HTTP Request: HEAD https://huggingface.co/tohoku-nlp/bert-base-japanese-v3/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 06:54:01,884 | Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-06-28 06:54:01,918 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/tohoku-nlp/bert-base-japanese-v3/65243d6e5629b969c77309f217bd7b1a79d43c7e/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 06:54:02,185 | HTTP Request: HEAD https://huggingface.co/tohoku-nlp/bert-base-japanese-v3/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 06:54:02,220 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/tohoku-nlp/bert-base-japanese-v3/65243d6e5629b969c77309f217bd7b1a79d43c7e/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 06:54:02,486 | HTTP Request: GET https://huggingface.co/api/models/tohoku-nlp/bert-base-japanese-v3/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 06:54:02,750 | HTTP Request: GET https://huggingface.co/api/models/tohoku-nlp/bert-base-japanese-v3/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 06:54:05,763 | HTTP Request: HEAD https://huggingface.co/bert-base-uncased/resolve/main/config.json "HTTP/1.1 200 OK"
+2026-06-28 06:54:06,037 | HTTP Request: GET https://huggingface.co/bert-base-uncased/resolve/main/config.json "HTTP/1.1 200 OK"
+2026-06-28 06:54:06,304 | HTTP Request: HEAD https://huggingface.co/bert-base-uncased/resolve/main/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 06:54:06,572 | HTTP Request: GET https://huggingface.co/bert-base-uncased/resolve/main/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 06:54:06,838 | HTTP Request: GET https://huggingface.co/api/models/bert-base-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 06:54:07,095 | HTTP Request: GET https://huggingface.co/api/models/google-bert/bert-base-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 06:54:07,366 | HTTP Request: GET https://huggingface.co/api/models/bert-base-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 06:54:07,637 | HTTP Request: GET https://huggingface.co/api/models/google-bert/bert-base-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 06:54:07,905 | HTTP Request: HEAD https://huggingface.co/bert-base-uncased/resolve/main/vocab.txt "HTTP/1.1 200 OK"
+2026-06-28 06:54:08,164 | HTTP Request: GET https://huggingface.co/bert-base-uncased/resolve/main/vocab.txt "HTTP/1.1 200 OK"
+2026-06-28 06:54:08,720 | HTTP Request: HEAD https://huggingface.co/bert-base-uncased/resolve/main/tokenizer.json "HTTP/1.1 200 OK"
+2026-06-28 06:54:08,980 | HTTP Request: GET https://huggingface.co/bert-base-uncased/resolve/main/tokenizer.json "HTTP/1.1 200 OK"
+2026-06-28 06:54:09,733 | HTTP Request: HEAD https://huggingface.co/bert-base-uncased/resolve/main/added_tokens.json "HTTP/1.1 404 Not Found"
+2026-06-28 06:54:10,023 | HTTP Request: HEAD https://huggingface.co/bert-base-uncased/resolve/main/special_tokens_map.json "HTTP/1.1 404 Not Found"
+2026-06-28 06:54:10,290 | HTTP Request: HEAD https://huggingface.co/bert-base-uncased/resolve/main/chat_template.jinja "HTTP/1.1 404 Not Found"
+2026-06-28 06:54:10,719 | HTTP Request: HEAD https://huggingface.co/bert-base-multilingual-uncased/resolve/main/config.json "HTTP/1.1 200 OK"
+2026-06-28 06:54:10,987 | HTTP Request: GET https://huggingface.co/bert-base-multilingual-uncased/resolve/main/config.json "HTTP/1.1 200 OK"
+2026-06-28 06:54:11,263 | HTTP Request: HEAD https://huggingface.co/bert-base-multilingual-uncased/resolve/main/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 06:54:11,539 | HTTP Request: GET https://huggingface.co/bert-base-multilingual-uncased/resolve/main/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 06:54:11,809 | HTTP Request: GET https://huggingface.co/api/models/bert-base-multilingual-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 06:54:12,069 | HTTP Request: GET https://huggingface.co/api/models/google-bert/bert-base-multilingual-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 06:54:12,332 | HTTP Request: GET https://huggingface.co/api/models/bert-base-multilingual-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 06:54:12,601 | HTTP Request: GET https://huggingface.co/api/models/google-bert/bert-base-multilingual-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 06:54:12,873 | HTTP Request: HEAD https://huggingface.co/bert-base-multilingual-uncased/resolve/main/vocab.txt "HTTP/1.1 200 OK"
+2026-06-28 06:54:13,161 | HTTP Request: GET https://huggingface.co/bert-base-multilingual-uncased/resolve/main/vocab.txt "HTTP/1.1 200 OK"
+2026-06-28 06:54:14,130 | HTTP Request: HEAD https://huggingface.co/bert-base-multilingual-uncased/resolve/main/tokenizer.json "HTTP/1.1 200 OK"
+2026-06-28 06:54:14,415 | HTTP Request: GET https://huggingface.co/bert-base-multilingual-uncased/resolve/main/tokenizer.json "HTTP/1.1 200 OK"
+2026-06-28 06:54:15,489 | HTTP Request: HEAD https://huggingface.co/bert-base-multilingual-uncased/resolve/main/added_tokens.json "HTTP/1.1 404 Not Found"
+2026-06-28 06:54:15,764 | HTTP Request: HEAD https://huggingface.co/bert-base-multilingual-uncased/resolve/main/special_tokens_map.json "HTTP/1.1 404 Not Found"
+2026-06-28 06:54:16,034 | HTTP Request: HEAD https://huggingface.co/bert-base-multilingual-uncased/resolve/main/chat_template.jinja "HTTP/1.1 404 Not Found"
+2026-06-28 06:54:16,858 | HTTP Request: GET https://huggingface.co/api/models/bert-base-multilingual-uncased "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 06:54:17,122 | HTTP Request: GET https://huggingface.co/api/models/google-bert/bert-base-multilingual-uncased "HTTP/1.1 200 OK"
+2026-06-28 06:54:17,402 | HTTP Request: HEAD https://huggingface.co/kykim/bert-kor-base/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 06:54:17,437 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/kykim/bert-kor-base/1779cc0982ada0216dd6de0dd4e86fb78201926d/config.json "HTTP/1.1 200 OK"
+2026-06-28 06:54:17,474 | HTTP Request: GET https://huggingface.co/api/resolve-cache/models/kykim/bert-kor-base/1779cc0982ada0216dd6de0dd4e86fb78201926d/config.json "HTTP/1.1 200 OK"
+2026-06-28 06:54:17,750 | HTTP Request: HEAD https://huggingface.co/kykim/bert-kor-base/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 06:54:17,784 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/kykim/bert-kor-base/1779cc0982ada0216dd6de0dd4e86fb78201926d/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 06:54:17,819 | HTTP Request: GET https://huggingface.co/api/resolve-cache/models/kykim/bert-kor-base/1779cc0982ada0216dd6de0dd4e86fb78201926d/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 06:54:18,094 | HTTP Request: GET https://huggingface.co/api/models/kykim/bert-kor-base/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 06:54:18,356 | HTTP Request: GET https://huggingface.co/api/models/kykim/bert-kor-base/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 06:54:18,616 | HTTP Request: HEAD https://huggingface.co/kykim/bert-kor-base/resolve/main/vocab.txt "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 06:54:18,650 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/kykim/bert-kor-base/1779cc0982ada0216dd6de0dd4e86fb78201926d/vocab.txt "HTTP/1.1 200 OK"
+2026-06-28 06:54:18,687 | HTTP Request: GET https://huggingface.co/api/resolve-cache/models/kykim/bert-kor-base/1779cc0982ada0216dd6de0dd4e86fb78201926d/vocab.txt "HTTP/1.1 200 OK"
+2026-06-28 06:54:18,962 | HTTP Request: HEAD https://huggingface.co/kykim/bert-kor-base/resolve/main/tokenizer.json "HTTP/1.1 404 Not Found"
+2026-06-28 06:54:19,217 | HTTP Request: HEAD https://huggingface.co/kykim/bert-kor-base/resolve/main/added_tokens.json "HTTP/1.1 404 Not Found"
+2026-06-28 06:54:19,476 | HTTP Request: HEAD https://huggingface.co/kykim/bert-kor-base/resolve/main/special_tokens_map.json "HTTP/1.1 404 Not Found"
+2026-06-28 06:54:19,746 | HTTP Request: HEAD https://huggingface.co/kykim/bert-kor-base/resolve/main/chat_template.jinja "HTTP/1.1 404 Not Found"
+2026-06-28 06:54:21,047 | HTTP Request: HEAD https://huggingface.co/dbmdz/bert-base-french-europeana-cased/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 06:54:21,081 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/dbmdz/bert-base-french-europeana-cased/b895c3cf291f7bf4c15639078a6bee0b3e272c5b/config.json "HTTP/1.1 200 OK"
+2026-06-28 06:54:21,115 | HTTP Request: GET https://huggingface.co/api/resolve-cache/models/dbmdz/bert-base-french-europeana-cased/b895c3cf291f7bf4c15639078a6bee0b3e272c5b/config.json "HTTP/1.1 200 OK"
+2026-06-28 06:54:21,376 | HTTP Request: HEAD https://huggingface.co/dbmdz/bert-base-french-europeana-cased/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 06:54:21,410 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/dbmdz/bert-base-french-europeana-cased/b895c3cf291f7bf4c15639078a6bee0b3e272c5b/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 06:54:21,445 | HTTP Request: GET https://huggingface.co/api/resolve-cache/models/dbmdz/bert-base-french-europeana-cased/b895c3cf291f7bf4c15639078a6bee0b3e272c5b/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 06:54:21,715 | HTTP Request: GET https://huggingface.co/api/models/dbmdz/bert-base-french-europeana-cased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 06:54:21,985 | HTTP Request: GET https://huggingface.co/api/models/dbmdz/bert-base-french-europeana-cased/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 06:54:22,254 | HTTP Request: HEAD https://huggingface.co/dbmdz/bert-base-french-europeana-cased/resolve/main/vocab.txt "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 06:54:22,288 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/dbmdz/bert-base-french-europeana-cased/b895c3cf291f7bf4c15639078a6bee0b3e272c5b/vocab.txt "HTTP/1.1 200 OK"
+2026-06-28 06:54:22,324 | HTTP Request: GET https://huggingface.co/api/resolve-cache/models/dbmdz/bert-base-french-europeana-cased/b895c3cf291f7bf4c15639078a6bee0b3e272c5b/vocab.txt "HTTP/1.1 200 OK"
+2026-06-28 06:54:22,598 | HTTP Request: HEAD https://huggingface.co/dbmdz/bert-base-french-europeana-cased/resolve/main/tokenizer.json "HTTP/1.1 404 Not Found"
+2026-06-28 06:54:22,866 | HTTP Request: HEAD https://huggingface.co/dbmdz/bert-base-french-europeana-cased/resolve/main/added_tokens.json "HTTP/1.1 404 Not Found"
+2026-06-28 06:54:23,134 | HTTP Request: HEAD https://huggingface.co/dbmdz/bert-base-french-europeana-cased/resolve/main/special_tokens_map.json "HTTP/1.1 404 Not Found"
+2026-06-28 06:54:23,401 | HTTP Request: HEAD https://huggingface.co/dbmdz/bert-base-french-europeana-cased/resolve/main/chat_template.jinja "HTTP/1.1 404 Not Found"
+2026-06-28 06:54:23,716 | HTTP Request: HEAD https://huggingface.co/dccuchile/bert-base-spanish-wwm-uncased/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 06:54:23,750 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/dccuchile/bert-base-spanish-wwm-uncased/d1c9c4565c9d6731e57ed7f027b802697bad861e/config.json "HTTP/1.1 200 OK"
+2026-06-28 06:54:23,786 | HTTP Request: GET https://huggingface.co/api/resolve-cache/models/dccuchile/bert-base-spanish-wwm-uncased/d1c9c4565c9d6731e57ed7f027b802697bad861e/config.json "HTTP/1.1 200 OK"
+2026-06-28 06:54:24,063 | HTTP Request: HEAD https://huggingface.co/dccuchile/bert-base-spanish-wwm-uncased/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 06:54:24,098 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/dccuchile/bert-base-spanish-wwm-uncased/d1c9c4565c9d6731e57ed7f027b802697bad861e/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 06:54:24,133 | HTTP Request: GET https://huggingface.co/api/resolve-cache/models/dccuchile/bert-base-spanish-wwm-uncased/d1c9c4565c9d6731e57ed7f027b802697bad861e/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 06:54:24,405 | HTTP Request: GET https://huggingface.co/api/models/dccuchile/bert-base-spanish-wwm-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 06:54:24,669 | HTTP Request: GET https://huggingface.co/api/models/dccuchile/bert-base-spanish-wwm-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 06:54:24,947 | HTTP Request: HEAD https://huggingface.co/dccuchile/bert-base-spanish-wwm-uncased/resolve/main/vocab.txt "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 06:54:24,981 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/dccuchile/bert-base-spanish-wwm-uncased/d1c9c4565c9d6731e57ed7f027b802697bad861e/vocab.txt "HTTP/1.1 200 OK"
+2026-06-28 06:54:25,018 | HTTP Request: GET https://huggingface.co/api/resolve-cache/models/dccuchile/bert-base-spanish-wwm-uncased/d1c9c4565c9d6731e57ed7f027b802697bad861e/vocab.txt "HTTP/1.1 200 OK"
+2026-06-28 06:54:25,291 | HTTP Request: HEAD https://huggingface.co/dccuchile/bert-base-spanish-wwm-uncased/resolve/main/tokenizer.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 06:54:25,325 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/dccuchile/bert-base-spanish-wwm-uncased/d1c9c4565c9d6731e57ed7f027b802697bad861e/tokenizer.json "HTTP/1.1 200 OK"
+2026-06-28 06:54:25,362 | HTTP Request: GET https://huggingface.co/api/resolve-cache/models/dccuchile/bert-base-spanish-wwm-uncased/d1c9c4565c9d6731e57ed7f027b802697bad861e/tokenizer.json "HTTP/1.1 200 OK"
+2026-06-28 06:54:25,648 | HTTP Request: HEAD https://huggingface.co/dccuchile/bert-base-spanish-wwm-uncased/resolve/main/added_tokens.json "HTTP/1.1 404 Not Found"
+2026-06-28 06:54:25,916 | HTTP Request: HEAD https://huggingface.co/dccuchile/bert-base-spanish-wwm-uncased/resolve/main/special_tokens_map.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 06:54:25,951 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/dccuchile/bert-base-spanish-wwm-uncased/d1c9c4565c9d6731e57ed7f027b802697bad861e/special_tokens_map.json "HTTP/1.1 200 OK"
+2026-06-28 06:54:25,986 | HTTP Request: GET https://huggingface.co/api/resolve-cache/models/dccuchile/bert-base-spanish-wwm-uncased/d1c9c4565c9d6731e57ed7f027b802697bad861e/special_tokens_map.json "HTTP/1.1 200 OK"
+2026-06-28 06:54:26,254 | HTTP Request: HEAD https://huggingface.co/dccuchile/bert-base-spanish-wwm-uncased/resolve/main/chat_template.jinja "HTTP/1.1 404 Not Found"
+2026-06-28 06:54:27,168 |   Downloading OpenVoiceV2 checkpoint (cached after first run)...
+2026-06-28 06:54:27,430 | HTTP Request: GET https://huggingface.co/api/models/myshell-ai/OpenVoiceV2/revision/main "HTTP/1.1 200 OK"
+2026-06-28 06:54:27,689 | HTTP Request: HEAD https://huggingface.co/myshell-ai/OpenVoiceV2/resolve/f36e7edfe1684461a8343844af60babc2efbb727/.DS_Store "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 06:54:27,724 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/myshell-ai/OpenVoiceV2/f36e7edfe1684461a8343844af60babc2efbb727/.DS_Store "HTTP/1.1 200 OK"
+2026-06-28 06:54:27,758 | HTTP Request: HEAD https://huggingface.co/myshell-ai/OpenVoiceV2/resolve/f36e7edfe1684461a8343844af60babc2efbb727/.gitattributes "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 06:54:27,761 | HTTP Request: HEAD https://huggingface.co/myshell-ai/OpenVoiceV2/resolve/f36e7edfe1684461a8343844af60babc2efbb727/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 06:54:27,764 | HTTP Request: HEAD https://huggingface.co/myshell-ai/OpenVoiceV2/resolve/f36e7edfe1684461a8343844af60babc2efbb727/base_speakers/ses/en-default.pth "HTTP/1.1 302 Found"
+2026-06-28 06:54:27,766 | HTTP Request: GET https://huggingface.co/api/resolve-cache/models/myshell-ai/OpenVoiceV2/f36e7edfe1684461a8343844af60babc2efbb727/.DS_Store "HTTP/1.1 200 OK"
+2026-06-28 06:54:27,769 | HTTP Request: HEAD https://huggingface.co/myshell-ai/OpenVoiceV2/resolve/f36e7edfe1684461a8343844af60babc2efbb727/base_speakers/.DS_Store "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 06:54:27,772 | HTTP Request: HEAD https://huggingface.co/myshell-ai/OpenVoiceV2/resolve/f36e7edfe1684461a8343844af60babc2efbb727/base_speakers/ses/en-br.pth "HTTP/1.1 302 Found"
+2026-06-28 06:54:27,775 | HTTP Request: HEAD https://huggingface.co/myshell-ai/OpenVoiceV2/resolve/f36e7edfe1684461a8343844af60babc2efbb727/base_speakers/ses/en-india.pth "HTTP/1.1 302 Found"
+2026-06-28 06:54:27,787 | HTTP Request: HEAD https://huggingface.co/myshell-ai/OpenVoiceV2/resolve/f36e7edfe1684461a8343844af60babc2efbb727/base_speakers/ses/en-au.pth "HTTP/1.1 302 Found"
+2026-06-28 06:54:27,793 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/myshell-ai/OpenVoiceV2/f36e7edfe1684461a8343844af60babc2efbb727/.gitattributes "HTTP/1.1 200 OK"
+2026-06-28 06:54:27,804 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/myshell-ai/OpenVoiceV2/f36e7edfe1684461a8343844af60babc2efbb727/README.md "HTTP/1.1 200 OK"
+2026-06-28 06:54:27,806 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/myshell-ai/OpenVoiceV2/f36e7edfe1684461a8343844af60babc2efbb727/base_speakers%2F.DS_Store "HTTP/1.1 200 OK"
+2026-06-28 06:54:27,848 | HTTP Request: GET https://huggingface.co/api/resolve-cache/models/myshell-ai/OpenVoiceV2/f36e7edfe1684461a8343844af60babc2efbb727/base_speakers%2F.DS_Store "HTTP/1.1 200 OK"
+2026-06-28 06:54:27,850 | HTTP Request: GET https://huggingface.co/api/resolve-cache/models/myshell-ai/OpenVoiceV2/f36e7edfe1684461a8343844af60babc2efbb727/README.md "HTTP/1.1 200 OK"
+2026-06-28 06:54:27,854 | HTTP Request: GET https://huggingface.co/api/resolve-cache/models/myshell-ai/OpenVoiceV2/f36e7edfe1684461a8343844af60babc2efbb727/.gitattributes "HTTP/1.1 200 OK"
+2026-06-28 06:54:28,082 | HTTP Request: HEAD https://huggingface.co/myshell-ai/OpenVoiceV2/resolve/f36e7edfe1684461a8343844af60babc2efbb727/base_speakers/ses/en-newest.pth "HTTP/1.1 302 Found"
+2026-06-28 06:54:28,117 | HTTP Request: HEAD https://huggingface.co/myshell-ai/OpenVoiceV2/resolve/f36e7edfe1684461a8343844af60babc2efbb727/base_speakers/ses/es.pth "HTTP/1.1 302 Found"
+2026-06-28 06:54:28,123 | HTTP Request: HEAD https://huggingface.co/myshell-ai/OpenVoiceV2/resolve/f36e7edfe1684461a8343844af60babc2efbb727/base_speakers/ses/en-us.pth "HTTP/1.1 302 Found"
+2026-06-28 06:54:28,126 | HTTP Request: HEAD https://huggingface.co/myshell-ai/OpenVoiceV2/resolve/f36e7edfe1684461a8343844af60babc2efbb727/base_speakers/ses/fr.pth "HTTP/1.1 302 Found"
+2026-06-28 06:54:30,101 | HTTP Request: HEAD https://huggingface.co/myshell-ai/OpenVoiceV2/resolve/f36e7edfe1684461a8343844af60babc2efbb727/base_speakers/ses/jp.pth "HTTP/1.1 302 Found"
+2026-06-28 06:54:30,111 | HTTP Request: HEAD https://huggingface.co/myshell-ai/OpenVoiceV2/resolve/f36e7edfe1684461a8343844af60babc2efbb727/base_speakers/ses/kr.pth "HTTP/1.1 302 Found"
+2026-06-28 06:54:30,124 | HTTP Request: HEAD https://huggingface.co/myshell-ai/OpenVoiceV2/resolve/f36e7edfe1684461a8343844af60babc2efbb727/base_speakers/ses/zh.pth "HTTP/1.1 302 Found"
+2026-06-28 06:54:30,126 | HTTP Request: HEAD https://huggingface.co/myshell-ai/OpenVoiceV2/resolve/f36e7edfe1684461a8343844af60babc2efbb727/converter/checkpoint.pth "HTTP/1.1 302 Found"
+2026-06-28 06:54:30,140 | HTTP Request: HEAD https://huggingface.co/myshell-ai/OpenVoiceV2/resolve/f36e7edfe1684461a8343844af60babc2efbb727/converter/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 06:54:30,176 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/myshell-ai/OpenVoiceV2/f36e7edfe1684461a8343844af60babc2efbb727/converter%2Fconfig.json "HTTP/1.1 200 OK"
+2026-06-28 06:54:30,212 | HTTP Request: GET https://huggingface.co/api/resolve-cache/models/myshell-ai/OpenVoiceV2/f36e7edfe1684461a8343844af60babc2efbb727/converter%2Fconfig.json "HTTP/1.1 200 OK"
+2026-06-28 06:58:28,139 | === Part 5: Voice Cloning (OpenVoice) ===
+2026-06-28 06:58:34,886 | HTTP Request: HEAD https://huggingface.co/tohoku-nlp/bert-base-japanese-v3/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 06:58:34,886 | Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-06-28 06:58:34,922 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/tohoku-nlp/bert-base-japanese-v3/65243d6e5629b969c77309f217bd7b1a79d43c7e/config.json "HTTP/1.1 200 OK"
+2026-06-28 06:58:35,186 | HTTP Request: HEAD https://huggingface.co/tohoku-nlp/bert-base-japanese-v3/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 06:58:35,222 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/tohoku-nlp/bert-base-japanese-v3/65243d6e5629b969c77309f217bd7b1a79d43c7e/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 06:58:35,495 | HTTP Request: HEAD https://huggingface.co/tohoku-nlp/bert-base-japanese-v3/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 06:58:35,532 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/tohoku-nlp/bert-base-japanese-v3/65243d6e5629b969c77309f217bd7b1a79d43c7e/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 06:58:35,816 | HTTP Request: GET https://huggingface.co/api/models/tohoku-nlp/bert-base-japanese-v3/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 06:58:36,086 | HTTP Request: GET https://huggingface.co/api/models/tohoku-nlp/bert-base-japanese-v3/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 06:58:37,629 | HTTP Request: HEAD https://huggingface.co/bert-base-uncased/resolve/main/config.json "HTTP/1.1 200 OK"
+2026-06-28 06:58:37,903 | HTTP Request: HEAD https://huggingface.co/bert-base-uncased/resolve/main/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 06:58:38,164 | HTTP Request: GET https://huggingface.co/api/models/bert-base-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 06:58:38,432 | HTTP Request: GET https://huggingface.co/api/models/google-bert/bert-base-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 06:58:38,698 | HTTP Request: GET https://huggingface.co/api/models/bert-base-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 06:58:38,968 | HTTP Request: GET https://huggingface.co/api/models/google-bert/bert-base-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 06:58:39,363 | HTTP Request: HEAD https://huggingface.co/bert-base-multilingual-uncased/resolve/main/config.json "HTTP/1.1 200 OK"
+2026-06-28 06:58:39,630 | HTTP Request: HEAD https://huggingface.co/bert-base-multilingual-uncased/resolve/main/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 06:58:39,973 | HTTP Request: GET https://huggingface.co/api/models/bert-base-multilingual-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 06:58:40,236 | HTTP Request: GET https://huggingface.co/api/models/google-bert/bert-base-multilingual-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 06:58:40,488 | HTTP Request: GET https://huggingface.co/api/models/bert-base-multilingual-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 06:58:40,748 | HTTP Request: GET https://huggingface.co/api/models/google-bert/bert-base-multilingual-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 06:58:41,500 | HTTP Request: GET https://huggingface.co/api/models/bert-base-multilingual-uncased "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 06:58:41,773 | HTTP Request: GET https://huggingface.co/api/models/google-bert/bert-base-multilingual-uncased "HTTP/1.1 200 OK"
+2026-06-28 06:58:42,043 | HTTP Request: HEAD https://huggingface.co/kykim/bert-kor-base/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 06:58:42,079 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/kykim/bert-kor-base/1779cc0982ada0216dd6de0dd4e86fb78201926d/config.json "HTTP/1.1 200 OK"
+2026-06-28 06:58:42,354 | HTTP Request: HEAD https://huggingface.co/kykim/bert-kor-base/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 06:58:42,390 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/kykim/bert-kor-base/1779cc0982ada0216dd6de0dd4e86fb78201926d/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 06:58:42,661 | HTTP Request: GET https://huggingface.co/api/models/kykim/bert-kor-base/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 06:58:42,927 | HTTP Request: GET https://huggingface.co/api/models/kykim/bert-kor-base/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 06:58:44,275 | HTTP Request: HEAD https://huggingface.co/dbmdz/bert-base-french-europeana-cased/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 06:58:44,310 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/dbmdz/bert-base-french-europeana-cased/b895c3cf291f7bf4c15639078a6bee0b3e272c5b/config.json "HTTP/1.1 200 OK"
+2026-06-28 06:58:44,587 | HTTP Request: HEAD https://huggingface.co/dbmdz/bert-base-french-europeana-cased/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 06:58:44,621 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/dbmdz/bert-base-french-europeana-cased/b895c3cf291f7bf4c15639078a6bee0b3e272c5b/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 06:58:44,892 | HTTP Request: GET https://huggingface.co/api/models/dbmdz/bert-base-french-europeana-cased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 06:58:45,170 | HTTP Request: GET https://huggingface.co/api/models/dbmdz/bert-base-french-europeana-cased/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 06:58:45,485 | HTTP Request: HEAD https://huggingface.co/dccuchile/bert-base-spanish-wwm-uncased/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 06:58:45,520 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/dccuchile/bert-base-spanish-wwm-uncased/d1c9c4565c9d6731e57ed7f027b802697bad861e/config.json "HTTP/1.1 200 OK"
+2026-06-28 06:58:45,796 | HTTP Request: HEAD https://huggingface.co/dccuchile/bert-base-spanish-wwm-uncased/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 06:58:45,832 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/dccuchile/bert-base-spanish-wwm-uncased/d1c9c4565c9d6731e57ed7f027b802697bad861e/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 06:58:46,093 | HTTP Request: GET https://huggingface.co/api/models/dccuchile/bert-base-spanish-wwm-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 06:58:46,356 | HTTP Request: GET https://huggingface.co/api/models/dccuchile/bert-base-spanish-wwm-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 06:58:47,190 |   Downloading OpenVoiceV2 checkpoint (cached after first run)...
+2026-06-28 06:58:47,456 | HTTP Request: GET https://huggingface.co/api/models/myshell-ai/OpenVoiceV2/revision/main "HTTP/1.1 200 OK"
+2026-06-28 06:58:49,057 | HTTP Request: HEAD https://huggingface.co/M4869/WavMark/resolve/main/step59000_snr39.99_pesq4.35_BERP_none0.30_mean1.81_std1.81.model.pkl "HTTP/1.1 302 Found"
+2026-06-28 06:58:52,477 |   OpenVoiceV2 loaded.
+2026-06-28 06:58:52,477 |   Extracting tone color from: data/voice_clone/my_voice.wav
+2026-06-28 07:00:26,496 | === Part 5: Voice Cloning (OpenVoice) ===
+2026-06-28 07:00:33,313 | HTTP Request: HEAD https://huggingface.co/tohoku-nlp/bert-base-japanese-v3/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:00:33,314 | Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-06-28 07:00:33,346 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/tohoku-nlp/bert-base-japanese-v3/65243d6e5629b969c77309f217bd7b1a79d43c7e/config.json "HTTP/1.1 200 OK"
+2026-06-28 07:00:33,620 | HTTP Request: HEAD https://huggingface.co/tohoku-nlp/bert-base-japanese-v3/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:00:33,653 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/tohoku-nlp/bert-base-japanese-v3/65243d6e5629b969c77309f217bd7b1a79d43c7e/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 07:00:33,934 | HTTP Request: HEAD https://huggingface.co/tohoku-nlp/bert-base-japanese-v3/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:00:33,967 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/tohoku-nlp/bert-base-japanese-v3/65243d6e5629b969c77309f217bd7b1a79d43c7e/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 07:00:34,235 | HTTP Request: GET https://huggingface.co/api/models/tohoku-nlp/bert-base-japanese-v3/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 07:00:34,510 | HTTP Request: GET https://huggingface.co/api/models/tohoku-nlp/bert-base-japanese-v3/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 07:00:36,333 | HTTP Request: HEAD https://huggingface.co/bert-base-uncased/resolve/main/config.json "HTTP/1.1 200 OK"
+2026-06-28 07:00:36,589 | HTTP Request: HEAD https://huggingface.co/bert-base-uncased/resolve/main/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 07:00:36,848 | HTTP Request: GET https://huggingface.co/api/models/bert-base-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:00:37,101 | HTTP Request: GET https://huggingface.co/api/models/google-bert/bert-base-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 07:00:37,363 | HTTP Request: GET https://huggingface.co/api/models/bert-base-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:00:37,630 | HTTP Request: GET https://huggingface.co/api/models/google-bert/bert-base-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 07:00:38,025 | HTTP Request: HEAD https://huggingface.co/bert-base-multilingual-uncased/resolve/main/config.json "HTTP/1.1 200 OK"
+2026-06-28 07:00:38,293 | HTTP Request: HEAD https://huggingface.co/bert-base-multilingual-uncased/resolve/main/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 07:00:38,556 | HTTP Request: GET https://huggingface.co/api/models/bert-base-multilingual-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:00:38,820 | HTTP Request: GET https://huggingface.co/api/models/google-bert/bert-base-multilingual-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 07:00:39,087 | HTTP Request: GET https://huggingface.co/api/models/bert-base-multilingual-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:00:39,353 | HTTP Request: GET https://huggingface.co/api/models/google-bert/bert-base-multilingual-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 07:00:40,106 | HTTP Request: GET https://huggingface.co/api/models/bert-base-multilingual-uncased "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:00:40,371 | HTTP Request: GET https://huggingface.co/api/models/google-bert/bert-base-multilingual-uncased "HTTP/1.1 200 OK"
+2026-06-28 07:00:40,657 | HTTP Request: HEAD https://huggingface.co/kykim/bert-kor-base/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:00:40,690 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/kykim/bert-kor-base/1779cc0982ada0216dd6de0dd4e86fb78201926d/config.json "HTTP/1.1 200 OK"
+2026-06-28 07:00:40,957 | HTTP Request: HEAD https://huggingface.co/kykim/bert-kor-base/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:00:40,991 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/kykim/bert-kor-base/1779cc0982ada0216dd6de0dd4e86fb78201926d/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 07:00:41,253 | HTTP Request: GET https://huggingface.co/api/models/kykim/bert-kor-base/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 07:00:41,515 | HTTP Request: GET https://huggingface.co/api/models/kykim/bert-kor-base/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 07:00:42,929 | HTTP Request: HEAD https://huggingface.co/dbmdz/bert-base-french-europeana-cased/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:00:42,961 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/dbmdz/bert-base-french-europeana-cased/b895c3cf291f7bf4c15639078a6bee0b3e272c5b/config.json "HTTP/1.1 200 OK"
+2026-06-28 07:00:43,230 | HTTP Request: HEAD https://huggingface.co/dbmdz/bert-base-french-europeana-cased/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:00:43,262 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/dbmdz/bert-base-french-europeana-cased/b895c3cf291f7bf4c15639078a6bee0b3e272c5b/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 07:00:43,533 | HTTP Request: GET https://huggingface.co/api/models/dbmdz/bert-base-french-europeana-cased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 07:00:43,794 | HTTP Request: GET https://huggingface.co/api/models/dbmdz/bert-base-french-europeana-cased/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 07:00:44,130 | HTTP Request: HEAD https://huggingface.co/dccuchile/bert-base-spanish-wwm-uncased/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:00:44,163 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/dccuchile/bert-base-spanish-wwm-uncased/d1c9c4565c9d6731e57ed7f027b802697bad861e/config.json "HTTP/1.1 200 OK"
+2026-06-28 07:00:44,431 | HTTP Request: HEAD https://huggingface.co/dccuchile/bert-base-spanish-wwm-uncased/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:00:44,464 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/dccuchile/bert-base-spanish-wwm-uncased/d1c9c4565c9d6731e57ed7f027b802697bad861e/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 07:00:44,732 | HTTP Request: GET https://huggingface.co/api/models/dccuchile/bert-base-spanish-wwm-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 07:00:44,997 | HTTP Request: GET https://huggingface.co/api/models/dccuchile/bert-base-spanish-wwm-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 07:00:45,854 |   Downloading OpenVoiceV2 checkpoint (cached after first run)...
+2026-06-28 07:00:46,113 | HTTP Request: GET https://huggingface.co/api/models/myshell-ai/OpenVoiceV2/revision/main "HTTP/1.1 200 OK"
+2026-06-28 07:00:47,701 | HTTP Request: HEAD https://huggingface.co/M4869/WavMark/resolve/main/step59000_snr39.99_pesq4.35_BERP_none0.30_mean1.81_std1.81.model.pkl "HTTP/1.1 302 Found"
+2026-06-28 07:00:47,919 |   OpenVoiceV2 loaded.
+2026-06-28 07:00:47,919 |   Extracting tone color from: data/voice_clone/my_voice.wav
+2026-06-28 07:00:53,049 |   Saved: data/voice_clone/target_se.pth  shape=torch.Size([1, 256, 1])
+2026-06-28 07:01:51,528 | === Part 5: Voice Cloning (OpenVoice) ===
+2026-06-28 07:01:58,307 | HTTP Request: HEAD https://huggingface.co/tohoku-nlp/bert-base-japanese-v3/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:01:58,308 | Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-06-28 07:01:58,341 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/tohoku-nlp/bert-base-japanese-v3/65243d6e5629b969c77309f217bd7b1a79d43c7e/config.json "HTTP/1.1 200 OK"
+2026-06-28 07:01:58,609 | HTTP Request: HEAD https://huggingface.co/tohoku-nlp/bert-base-japanese-v3/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:01:58,643 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/tohoku-nlp/bert-base-japanese-v3/65243d6e5629b969c77309f217bd7b1a79d43c7e/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 07:01:58,911 | HTTP Request: HEAD https://huggingface.co/tohoku-nlp/bert-base-japanese-v3/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:01:58,944 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/tohoku-nlp/bert-base-japanese-v3/65243d6e5629b969c77309f217bd7b1a79d43c7e/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 07:01:59,207 | HTTP Request: GET https://huggingface.co/api/models/tohoku-nlp/bert-base-japanese-v3/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 07:01:59,480 | HTTP Request: GET https://huggingface.co/api/models/tohoku-nlp/bert-base-japanese-v3/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 07:02:01,304 | HTTP Request: HEAD https://huggingface.co/bert-base-uncased/resolve/main/config.json "HTTP/1.1 200 OK"
+2026-06-28 07:02:01,572 | HTTP Request: HEAD https://huggingface.co/bert-base-uncased/resolve/main/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 07:02:01,833 | HTTP Request: GET https://huggingface.co/api/models/bert-base-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:02:02,102 | HTTP Request: GET https://huggingface.co/api/models/google-bert/bert-base-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 07:02:02,370 | HTTP Request: GET https://huggingface.co/api/models/bert-base-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:02:02,641 | HTTP Request: GET https://huggingface.co/api/models/google-bert/bert-base-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 07:02:03,032 | HTTP Request: HEAD https://huggingface.co/bert-base-multilingual-uncased/resolve/main/config.json "HTTP/1.1 200 OK"
+2026-06-28 07:02:03,299 | HTTP Request: HEAD https://huggingface.co/bert-base-multilingual-uncased/resolve/main/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 07:02:03,566 | HTTP Request: GET https://huggingface.co/api/models/bert-base-multilingual-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:02:03,830 | HTTP Request: GET https://huggingface.co/api/models/google-bert/bert-base-multilingual-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 07:02:04,087 | HTTP Request: GET https://huggingface.co/api/models/bert-base-multilingual-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:02:04,356 | HTTP Request: GET https://huggingface.co/api/models/google-bert/bert-base-multilingual-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 07:02:05,110 | HTTP Request: GET https://huggingface.co/api/models/bert-base-multilingual-uncased "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:02:05,389 | HTTP Request: GET https://huggingface.co/api/models/google-bert/bert-base-multilingual-uncased "HTTP/1.1 200 OK"
+2026-06-28 07:02:05,678 | HTTP Request: HEAD https://huggingface.co/kykim/bert-kor-base/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:02:05,712 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/kykim/bert-kor-base/1779cc0982ada0216dd6de0dd4e86fb78201926d/config.json "HTTP/1.1 200 OK"
+2026-06-28 07:02:05,974 | HTTP Request: HEAD https://huggingface.co/kykim/bert-kor-base/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:02:06,044 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/kykim/bert-kor-base/1779cc0982ada0216dd6de0dd4e86fb78201926d/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 07:02:06,313 | HTTP Request: GET https://huggingface.co/api/models/kykim/bert-kor-base/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 07:02:06,588 | HTTP Request: GET https://huggingface.co/api/models/kykim/bert-kor-base/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 07:02:08,022 | HTTP Request: HEAD https://huggingface.co/dbmdz/bert-base-french-europeana-cased/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:02:08,057 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/dbmdz/bert-base-french-europeana-cased/b895c3cf291f7bf4c15639078a6bee0b3e272c5b/config.json "HTTP/1.1 200 OK"
+2026-06-28 07:02:08,358 | HTTP Request: HEAD https://huggingface.co/dbmdz/bert-base-french-europeana-cased/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:02:08,391 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/dbmdz/bert-base-french-europeana-cased/b895c3cf291f7bf4c15639078a6bee0b3e272c5b/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 07:02:08,658 | HTTP Request: GET https://huggingface.co/api/models/dbmdz/bert-base-french-europeana-cased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 07:02:08,940 | HTTP Request: GET https://huggingface.co/api/models/dbmdz/bert-base-french-europeana-cased/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 07:02:09,260 | HTTP Request: HEAD https://huggingface.co/dccuchile/bert-base-spanish-wwm-uncased/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:02:09,294 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/dccuchile/bert-base-spanish-wwm-uncased/d1c9c4565c9d6731e57ed7f027b802697bad861e/config.json "HTTP/1.1 200 OK"
+2026-06-28 07:02:09,566 | HTTP Request: HEAD https://huggingface.co/dccuchile/bert-base-spanish-wwm-uncased/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:02:09,599 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/dccuchile/bert-base-spanish-wwm-uncased/d1c9c4565c9d6731e57ed7f027b802697bad861e/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 07:02:09,869 | HTTP Request: GET https://huggingface.co/api/models/dccuchile/bert-base-spanish-wwm-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 07:02:10,129 | HTTP Request: GET https://huggingface.co/api/models/dccuchile/bert-base-spanish-wwm-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 07:02:10,988 |   Downloading OpenVoiceV2 checkpoint (cached after first run)...
+2026-06-28 07:02:11,249 | HTTP Request: GET https://huggingface.co/api/models/myshell-ai/OpenVoiceV2/revision/main "HTTP/1.1 200 OK"
+2026-06-28 07:02:12,777 | HTTP Request: HEAD https://huggingface.co/M4869/WavMark/resolve/main/step59000_snr39.99_pesq4.35_BERP_none0.30_mean1.81_std1.81.model.pkl "HTTP/1.1 302 Found"
+2026-06-28 07:02:13,028 |   OpenVoiceV2 loaded.
+2026-06-28 07:02:42,168 | === Part 5: Voice Cloning (OpenVoice) ===
+2026-06-28 07:02:48,881 | HTTP Request: HEAD https://huggingface.co/tohoku-nlp/bert-base-japanese-v3/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:02:48,882 | Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-06-28 07:02:48,915 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/tohoku-nlp/bert-base-japanese-v3/65243d6e5629b969c77309f217bd7b1a79d43c7e/config.json "HTTP/1.1 200 OK"
+2026-06-28 07:02:49,196 | HTTP Request: HEAD https://huggingface.co/tohoku-nlp/bert-base-japanese-v3/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:02:49,229 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/tohoku-nlp/bert-base-japanese-v3/65243d6e5629b969c77309f217bd7b1a79d43c7e/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 07:02:49,500 | HTTP Request: HEAD https://huggingface.co/tohoku-nlp/bert-base-japanese-v3/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:02:49,534 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/tohoku-nlp/bert-base-japanese-v3/65243d6e5629b969c77309f217bd7b1a79d43c7e/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 07:02:49,804 | HTTP Request: GET https://huggingface.co/api/models/tohoku-nlp/bert-base-japanese-v3/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 07:02:50,073 | HTTP Request: GET https://huggingface.co/api/models/tohoku-nlp/bert-base-japanese-v3/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 07:02:51,872 | HTTP Request: HEAD https://huggingface.co/bert-base-uncased/resolve/main/config.json "HTTP/1.1 200 OK"
+2026-06-28 07:02:52,145 | HTTP Request: HEAD https://huggingface.co/bert-base-uncased/resolve/main/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 07:02:52,432 | HTTP Request: GET https://huggingface.co/api/models/bert-base-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:02:52,694 | HTTP Request: GET https://huggingface.co/api/models/google-bert/bert-base-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 07:02:52,955 | HTTP Request: GET https://huggingface.co/api/models/bert-base-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:02:53,217 | HTTP Request: GET https://huggingface.co/api/models/google-bert/bert-base-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 07:02:53,626 | HTTP Request: HEAD https://huggingface.co/bert-base-multilingual-uncased/resolve/main/config.json "HTTP/1.1 200 OK"
+2026-06-28 07:02:53,895 | HTTP Request: HEAD https://huggingface.co/bert-base-multilingual-uncased/resolve/main/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 07:02:54,150 | HTTP Request: GET https://huggingface.co/api/models/bert-base-multilingual-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:02:54,411 | HTTP Request: GET https://huggingface.co/api/models/google-bert/bert-base-multilingual-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 07:02:54,674 | HTTP Request: GET https://huggingface.co/api/models/bert-base-multilingual-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:02:54,942 | HTTP Request: GET https://huggingface.co/api/models/google-bert/bert-base-multilingual-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 07:02:55,704 | HTTP Request: GET https://huggingface.co/api/models/bert-base-multilingual-uncased "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:02:55,971 | HTTP Request: GET https://huggingface.co/api/models/google-bert/bert-base-multilingual-uncased "HTTP/1.1 200 OK"
+2026-06-28 07:02:56,246 | HTTP Request: HEAD https://huggingface.co/kykim/bert-kor-base/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:02:56,279 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/kykim/bert-kor-base/1779cc0982ada0216dd6de0dd4e86fb78201926d/config.json "HTTP/1.1 200 OK"
+2026-06-28 07:02:56,558 | HTTP Request: HEAD https://huggingface.co/kykim/bert-kor-base/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:02:56,592 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/kykim/bert-kor-base/1779cc0982ada0216dd6de0dd4e86fb78201926d/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 07:02:56,856 | HTTP Request: GET https://huggingface.co/api/models/kykim/bert-kor-base/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 07:02:57,126 | HTTP Request: GET https://huggingface.co/api/models/kykim/bert-kor-base/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 07:02:58,541 | HTTP Request: HEAD https://huggingface.co/dbmdz/bert-base-french-europeana-cased/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:02:58,579 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/dbmdz/bert-base-french-europeana-cased/b895c3cf291f7bf4c15639078a6bee0b3e272c5b/config.json "HTTP/1.1 200 OK"
+2026-06-28 07:02:58,849 | HTTP Request: HEAD https://huggingface.co/dbmdz/bert-base-french-europeana-cased/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:02:58,884 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/dbmdz/bert-base-french-europeana-cased/b895c3cf291f7bf4c15639078a6bee0b3e272c5b/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 07:02:59,156 | HTTP Request: GET https://huggingface.co/api/models/dbmdz/bert-base-french-europeana-cased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 07:02:59,419 | HTTP Request: GET https://huggingface.co/api/models/dbmdz/bert-base-french-europeana-cased/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 07:02:59,731 | HTTP Request: HEAD https://huggingface.co/dccuchile/bert-base-spanish-wwm-uncased/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:02:59,764 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/dccuchile/bert-base-spanish-wwm-uncased/d1c9c4565c9d6731e57ed7f027b802697bad861e/config.json "HTTP/1.1 200 OK"
+2026-06-28 07:03:00,034 | HTTP Request: HEAD https://huggingface.co/dccuchile/bert-base-spanish-wwm-uncased/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:03:00,069 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/dccuchile/bert-base-spanish-wwm-uncased/d1c9c4565c9d6731e57ed7f027b802697bad861e/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 07:03:00,345 | HTTP Request: GET https://huggingface.co/api/models/dccuchile/bert-base-spanish-wwm-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 07:03:00,648 | HTTP Request: GET https://huggingface.co/api/models/dccuchile/bert-base-spanish-wwm-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 07:03:01,492 |   Downloading OpenVoiceV2 checkpoint (cached after first run)...
+2026-06-28 07:03:01,756 | HTTP Request: GET https://huggingface.co/api/models/myshell-ai/OpenVoiceV2/revision/main "HTTP/1.1 200 OK"
+2026-06-28 07:03:03,494 | HTTP Request: HEAD https://huggingface.co/M4869/WavMark/resolve/main/step59000_snr39.99_pesq4.35_BERP_none0.30_mean1.81_std1.81.model.pkl "HTTP/1.1 302 Found"
+2026-06-28 07:03:03,717 |   OpenVoiceV2 loaded.
+2026-06-28 07:03:03,980 | HTTP Request: HEAD https://huggingface.co/myshell-ai/MeloTTS-English/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:03:04,015 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/myshell-ai/MeloTTS-English/bb4fb7346d566d277ba8c8c7dbfdf6786139b8ef/config.json "HTTP/1.1 200 OK"
+2026-06-28 07:03:04,051 | HTTP Request: GET https://huggingface.co/api/resolve-cache/models/myshell-ai/MeloTTS-English/bb4fb7346d566d277ba8c8c7dbfdf6786139b8ef/config.json "HTTP/1.1 200 OK"
+2026-06-28 07:03:05,257 | HTTP Request: HEAD https://huggingface.co/myshell-ai/MeloTTS-English/resolve/main/checkpoint.pth "HTTP/1.1 302 Found"
+2026-06-28 07:03:26,042 |   Text: "I completed the assignment!"  |  Accents: ['us', 'br', 'india', 'au']
+2026-06-28 07:03:47,601 | === Part 5: Voice Cloning (OpenVoice) ===
+2026-06-28 07:03:54,386 | HTTP Request: HEAD https://huggingface.co/tohoku-nlp/bert-base-japanese-v3/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:03:54,419 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/tohoku-nlp/bert-base-japanese-v3/65243d6e5629b969c77309f217bd7b1a79d43c7e/config.json "HTTP/1.1 200 OK"
+2026-06-28 07:03:54,697 | HTTP Request: HEAD https://huggingface.co/tohoku-nlp/bert-base-japanese-v3/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:03:54,730 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/tohoku-nlp/bert-base-japanese-v3/65243d6e5629b969c77309f217bd7b1a79d43c7e/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 07:03:54,994 | HTTP Request: HEAD https://huggingface.co/tohoku-nlp/bert-base-japanese-v3/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:03:54,995 | Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-06-28 07:03:55,028 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/tohoku-nlp/bert-base-japanese-v3/65243d6e5629b969c77309f217bd7b1a79d43c7e/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 07:03:55,299 | HTTP Request: GET https://huggingface.co/api/models/tohoku-nlp/bert-base-japanese-v3/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 07:03:55,569 | HTTP Request: GET https://huggingface.co/api/models/tohoku-nlp/bert-base-japanese-v3/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 07:03:57,400 | HTTP Request: HEAD https://huggingface.co/bert-base-uncased/resolve/main/config.json "HTTP/1.1 200 OK"
+2026-06-28 07:03:57,671 | HTTP Request: HEAD https://huggingface.co/bert-base-uncased/resolve/main/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 07:03:57,936 | HTTP Request: GET https://huggingface.co/api/models/bert-base-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:03:58,212 | HTTP Request: GET https://huggingface.co/api/models/google-bert/bert-base-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 07:03:58,481 | HTTP Request: GET https://huggingface.co/api/models/bert-base-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:03:58,743 | HTTP Request: GET https://huggingface.co/api/models/google-bert/bert-base-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 07:03:59,139 | HTTP Request: HEAD https://huggingface.co/bert-base-multilingual-uncased/resolve/main/config.json "HTTP/1.1 200 OK"
+2026-06-28 07:03:59,401 | HTTP Request: HEAD https://huggingface.co/bert-base-multilingual-uncased/resolve/main/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 07:03:59,667 | HTTP Request: GET https://huggingface.co/api/models/bert-base-multilingual-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:03:59,923 | HTTP Request: GET https://huggingface.co/api/models/google-bert/bert-base-multilingual-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 07:04:00,186 | HTTP Request: GET https://huggingface.co/api/models/bert-base-multilingual-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:04:00,449 | HTTP Request: GET https://huggingface.co/api/models/google-bert/bert-base-multilingual-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 07:04:01,202 | HTTP Request: GET https://huggingface.co/api/models/bert-base-multilingual-uncased "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:04:01,467 | HTTP Request: GET https://huggingface.co/api/models/google-bert/bert-base-multilingual-uncased "HTTP/1.1 200 OK"
+2026-06-28 07:04:01,756 | HTTP Request: HEAD https://huggingface.co/kykim/bert-kor-base/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:04:01,790 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/kykim/bert-kor-base/1779cc0982ada0216dd6de0dd4e86fb78201926d/config.json "HTTP/1.1 200 OK"
+2026-06-28 07:04:02,052 | HTTP Request: HEAD https://huggingface.co/kykim/bert-kor-base/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:04:02,086 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/kykim/bert-kor-base/1779cc0982ada0216dd6de0dd4e86fb78201926d/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 07:04:02,360 | HTTP Request: GET https://huggingface.co/api/models/kykim/bert-kor-base/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 07:04:02,626 | HTTP Request: GET https://huggingface.co/api/models/kykim/bert-kor-base/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 07:04:04,033 | HTTP Request: HEAD https://huggingface.co/dbmdz/bert-base-french-europeana-cased/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:04:04,065 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/dbmdz/bert-base-french-europeana-cased/b895c3cf291f7bf4c15639078a6bee0b3e272c5b/config.json "HTTP/1.1 200 OK"
+2026-06-28 07:04:04,322 | HTTP Request: HEAD https://huggingface.co/dbmdz/bert-base-french-europeana-cased/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:04:04,357 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/dbmdz/bert-base-french-europeana-cased/b895c3cf291f7bf4c15639078a6bee0b3e272c5b/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 07:04:04,625 | HTTP Request: GET https://huggingface.co/api/models/dbmdz/bert-base-french-europeana-cased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 07:04:04,909 | HTTP Request: GET https://huggingface.co/api/models/dbmdz/bert-base-french-europeana-cased/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 07:04:05,233 | HTTP Request: HEAD https://huggingface.co/dccuchile/bert-base-spanish-wwm-uncased/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:04:05,266 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/dccuchile/bert-base-spanish-wwm-uncased/d1c9c4565c9d6731e57ed7f027b802697bad861e/config.json "HTTP/1.1 200 OK"
+2026-06-28 07:04:05,531 | HTTP Request: HEAD https://huggingface.co/dccuchile/bert-base-spanish-wwm-uncased/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:04:05,566 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/dccuchile/bert-base-spanish-wwm-uncased/d1c9c4565c9d6731e57ed7f027b802697bad861e/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 07:04:05,819 | HTTP Request: GET https://huggingface.co/api/models/dccuchile/bert-base-spanish-wwm-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 07:04:06,083 | HTTP Request: GET https://huggingface.co/api/models/dccuchile/bert-base-spanish-wwm-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 07:04:06,996 |   Downloading OpenVoiceV2 checkpoint (cached after first run)...
+2026-06-28 07:04:07,260 | HTTP Request: GET https://huggingface.co/api/models/myshell-ai/OpenVoiceV2/revision/main "HTTP/1.1 200 OK"
+2026-06-28 07:04:08,794 | HTTP Request: HEAD https://huggingface.co/M4869/WavMark/resolve/main/step59000_snr39.99_pesq4.35_BERP_none0.30_mean1.81_std1.81.model.pkl "HTTP/1.1 302 Found"
+2026-06-28 07:04:09,046 |   OpenVoiceV2 loaded.
+2026-06-28 07:04:09,313 | HTTP Request: HEAD https://huggingface.co/myshell-ai/MeloTTS-English/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:04:09,345 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/myshell-ai/MeloTTS-English/bb4fb7346d566d277ba8c8c7dbfdf6786139b8ef/config.json "HTTP/1.1 200 OK"
+2026-06-28 07:04:10,598 | HTTP Request: HEAD https://huggingface.co/myshell-ai/MeloTTS-English/resolve/main/checkpoint.pth "HTTP/1.1 302 Found"
+2026-06-28 07:04:10,908 |   Text: "I completed the assignment!"  |  Accents: ['us', 'br', 'india', 'au']
+2026-06-28 07:04:45,922 | === Part 5: Voice Cloning (OpenVoice) ===
+2026-06-28 07:04:52,707 | HTTP Request: HEAD https://huggingface.co/tohoku-nlp/bert-base-japanese-v3/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:04:52,709 | Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-06-28 07:04:52,741 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/tohoku-nlp/bert-base-japanese-v3/65243d6e5629b969c77309f217bd7b1a79d43c7e/config.json "HTTP/1.1 200 OK"
+2026-06-28 07:04:53,009 | HTTP Request: HEAD https://huggingface.co/tohoku-nlp/bert-base-japanese-v3/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:04:53,042 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/tohoku-nlp/bert-base-japanese-v3/65243d6e5629b969c77309f217bd7b1a79d43c7e/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 07:04:53,302 | HTTP Request: HEAD https://huggingface.co/tohoku-nlp/bert-base-japanese-v3/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:04:53,335 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/tohoku-nlp/bert-base-japanese-v3/65243d6e5629b969c77309f217bd7b1a79d43c7e/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 07:04:53,604 | HTTP Request: GET https://huggingface.co/api/models/tohoku-nlp/bert-base-japanese-v3/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 07:04:53,878 | HTTP Request: GET https://huggingface.co/api/models/tohoku-nlp/bert-base-japanese-v3/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 07:04:55,618 | HTTP Request: HEAD https://huggingface.co/bert-base-uncased/resolve/main/config.json "HTTP/1.1 200 OK"
+2026-06-28 07:04:55,883 | HTTP Request: HEAD https://huggingface.co/bert-base-uncased/resolve/main/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 07:04:56,145 | HTTP Request: GET https://huggingface.co/api/models/bert-base-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:04:56,412 | HTTP Request: GET https://huggingface.co/api/models/google-bert/bert-base-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 07:04:56,675 | HTTP Request: GET https://huggingface.co/api/models/bert-base-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:04:56,946 | HTTP Request: GET https://huggingface.co/api/models/google-bert/bert-base-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 07:04:57,346 | HTTP Request: HEAD https://huggingface.co/bert-base-multilingual-uncased/resolve/main/config.json "HTTP/1.1 200 OK"
+2026-06-28 07:04:57,612 | HTTP Request: HEAD https://huggingface.co/bert-base-multilingual-uncased/resolve/main/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 07:04:57,880 | HTTP Request: GET https://huggingface.co/api/models/bert-base-multilingual-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:04:58,143 | HTTP Request: GET https://huggingface.co/api/models/google-bert/bert-base-multilingual-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 07:04:58,405 | HTTP Request: GET https://huggingface.co/api/models/bert-base-multilingual-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:04:58,676 | HTTP Request: GET https://huggingface.co/api/models/google-bert/bert-base-multilingual-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 07:04:59,437 | HTTP Request: GET https://huggingface.co/api/models/bert-base-multilingual-uncased "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:04:59,704 | HTTP Request: GET https://huggingface.co/api/models/google-bert/bert-base-multilingual-uncased "HTTP/1.1 200 OK"
+2026-06-28 07:04:59,977 | HTTP Request: HEAD https://huggingface.co/kykim/bert-kor-base/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:05:00,009 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/kykim/bert-kor-base/1779cc0982ada0216dd6de0dd4e86fb78201926d/config.json "HTTP/1.1 200 OK"
+2026-06-28 07:05:00,271 | HTTP Request: HEAD https://huggingface.co/kykim/bert-kor-base/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:05:00,305 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/kykim/bert-kor-base/1779cc0982ada0216dd6de0dd4e86fb78201926d/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 07:05:00,568 | HTTP Request: GET https://huggingface.co/api/models/kykim/bert-kor-base/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 07:05:00,835 | HTTP Request: GET https://huggingface.co/api/models/kykim/bert-kor-base/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 07:05:02,196 | HTTP Request: HEAD https://huggingface.co/dbmdz/bert-base-french-europeana-cased/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:05:02,233 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/dbmdz/bert-base-french-europeana-cased/b895c3cf291f7bf4c15639078a6bee0b3e272c5b/config.json "HTTP/1.1 200 OK"
+2026-06-28 07:05:02,500 | HTTP Request: HEAD https://huggingface.co/dbmdz/bert-base-french-europeana-cased/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:05:02,532 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/dbmdz/bert-base-french-europeana-cased/b895c3cf291f7bf4c15639078a6bee0b3e272c5b/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 07:05:02,804 | HTTP Request: GET https://huggingface.co/api/models/dbmdz/bert-base-french-europeana-cased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 07:05:03,073 | HTTP Request: GET https://huggingface.co/api/models/dbmdz/bert-base-french-europeana-cased/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 07:05:03,389 | HTTP Request: HEAD https://huggingface.co/dccuchile/bert-base-spanish-wwm-uncased/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:05:03,422 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/dccuchile/bert-base-spanish-wwm-uncased/d1c9c4565c9d6731e57ed7f027b802697bad861e/config.json "HTTP/1.1 200 OK"
+2026-06-28 07:05:03,687 | HTTP Request: HEAD https://huggingface.co/dccuchile/bert-base-spanish-wwm-uncased/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:05:03,720 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/dccuchile/bert-base-spanish-wwm-uncased/d1c9c4565c9d6731e57ed7f027b802697bad861e/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 07:05:03,990 | HTTP Request: GET https://huggingface.co/api/models/dccuchile/bert-base-spanish-wwm-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 07:05:04,256 | HTTP Request: GET https://huggingface.co/api/models/dccuchile/bert-base-spanish-wwm-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 07:05:05,110 |   Downloading OpenVoiceV2 checkpoint (cached after first run)...
+2026-06-28 07:05:05,376 | HTTP Request: GET https://huggingface.co/api/models/myshell-ai/OpenVoiceV2/revision/main "HTTP/1.1 200 OK"
+2026-06-28 07:05:06,954 | HTTP Request: HEAD https://huggingface.co/M4869/WavMark/resolve/main/step59000_snr39.99_pesq4.35_BERP_none0.30_mean1.81_std1.81.model.pkl "HTTP/1.1 302 Found"
+2026-06-28 07:05:07,189 |   OpenVoiceV2 loaded.
+2026-06-28 07:05:07,450 | HTTP Request: HEAD https://huggingface.co/myshell-ai/MeloTTS-English/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:05:07,483 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/myshell-ai/MeloTTS-English/bb4fb7346d566d277ba8c8c7dbfdf6786139b8ef/config.json "HTTP/1.1 200 OK"
+2026-06-28 07:05:08,772 | HTTP Request: HEAD https://huggingface.co/myshell-ai/MeloTTS-English/resolve/main/checkpoint.pth "HTTP/1.1 302 Found"
+2026-06-28 07:05:09,052 |   Text: "I completed the assignment!"  |  Accents: ['us', 'br', 'india', 'au']
+2026-06-28 07:05:09,455 | HTTP Request: HEAD https://huggingface.co/bert-base-uncased/resolve/main/config.json "HTTP/1.1 200 OK"
+2026-06-28 07:05:09,718 | HTTP Request: HEAD https://huggingface.co/bert-base-uncased/resolve/main/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 07:05:09,977 | HTTP Request: GET https://huggingface.co/api/models/bert-base-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:05:10,232 | HTTP Request: GET https://huggingface.co/api/models/google-bert/bert-base-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 07:05:10,566 | HTTP Request: GET https://huggingface.co/api/models/bert-base-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:05:10,843 | HTTP Request: GET https://huggingface.co/api/models/google-bert/bert-base-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 07:05:11,237 | HTTP Request: HEAD https://huggingface.co/dccuchile/bert-base-spanish-wwm-uncased/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:05:11,272 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/dccuchile/bert-base-spanish-wwm-uncased/d1c9c4565c9d6731e57ed7f027b802697bad861e/config.json "HTTP/1.1 200 OK"
+2026-06-28 07:05:11,529 | HTTP Request: HEAD https://huggingface.co/dccuchile/bert-base-spanish-wwm-uncased/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:05:11,563 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/dccuchile/bert-base-spanish-wwm-uncased/d1c9c4565c9d6731e57ed7f027b802697bad861e/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 07:05:11,832 | HTTP Request: GET https://huggingface.co/api/models/dccuchile/bert-base-spanish-wwm-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 07:05:12,101 | HTTP Request: GET https://huggingface.co/api/models/dccuchile/bert-base-spanish-wwm-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 07:05:12,457 | HTTP Request: HEAD https://huggingface.co/dbmdz/bert-base-french-europeana-cased/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:05:12,493 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/dbmdz/bert-base-french-europeana-cased/b895c3cf291f7bf4c15639078a6bee0b3e272c5b/config.json "HTTP/1.1 200 OK"
+2026-06-28 07:05:12,760 | HTTP Request: HEAD https://huggingface.co/dbmdz/bert-base-french-europeana-cased/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:05:12,796 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/dbmdz/bert-base-french-europeana-cased/b895c3cf291f7bf4c15639078a6bee0b3e272c5b/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 07:05:13,061 | HTTP Request: GET https://huggingface.co/api/models/dbmdz/bert-base-french-europeana-cased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 07:05:13,324 | HTTP Request: GET https://huggingface.co/api/models/dbmdz/bert-base-french-europeana-cased/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 07:05:13,639 | HTTP Request: HEAD https://huggingface.co/bert-base-uncased/resolve/main/config.json "HTTP/1.1 200 OK"
+2026-06-28 07:05:15,324 | HTTP Request: HEAD https://huggingface.co/bert-base-uncased/resolve/main/model.safetensors "HTTP/1.1 302 Found"
+2026-06-28 07:05:25,594 |   [us    ] -> data/voice_clone/cloned_us.wav
+2026-06-28 07:05:26,031 |   [br    ] -> data/voice_clone/cloned_br.wav
+2026-06-28 07:05:26,741 |   [india ] -> data/voice_clone/cloned_india.wav
+2026-06-28 07:05:27,013 |   [au    ] -> data/voice_clone/cloned_au.wav
+2026-06-28 07:05:27,826 |   Mel grid saved to plots/voice_clone_mel_grid.png
+2026-06-28 07:05:52,811 | === Part 5: Voice Cloning (OpenVoice) ===
+2026-06-28 07:05:59,548 | HTTP Request: HEAD https://huggingface.co/tohoku-nlp/bert-base-japanese-v3/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:05:59,549 | Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-06-28 07:05:59,582 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/tohoku-nlp/bert-base-japanese-v3/65243d6e5629b969c77309f217bd7b1a79d43c7e/config.json "HTTP/1.1 200 OK"
+2026-06-28 07:06:00,254 | HTTP Request: HEAD https://huggingface.co/tohoku-nlp/bert-base-japanese-v3/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:06:00,287 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/tohoku-nlp/bert-base-japanese-v3/65243d6e5629b969c77309f217bd7b1a79d43c7e/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 07:06:00,546 | HTTP Request: HEAD https://huggingface.co/tohoku-nlp/bert-base-japanese-v3/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:06:00,580 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/tohoku-nlp/bert-base-japanese-v3/65243d6e5629b969c77309f217bd7b1a79d43c7e/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 07:06:00,843 | HTTP Request: GET https://huggingface.co/api/models/tohoku-nlp/bert-base-japanese-v3/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 07:06:01,101 | HTTP Request: GET https://huggingface.co/api/models/tohoku-nlp/bert-base-japanese-v3/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 07:06:02,891 | HTTP Request: HEAD https://huggingface.co/bert-base-uncased/resolve/main/config.json "HTTP/1.1 200 OK"
+2026-06-28 07:06:03,168 | HTTP Request: HEAD https://huggingface.co/bert-base-uncased/resolve/main/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 07:06:03,432 | HTTP Request: GET https://huggingface.co/api/models/bert-base-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:06:03,691 | HTTP Request: GET https://huggingface.co/api/models/google-bert/bert-base-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 07:06:03,954 | HTTP Request: GET https://huggingface.co/api/models/bert-base-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:06:04,219 | HTTP Request: GET https://huggingface.co/api/models/google-bert/bert-base-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 07:06:04,619 | HTTP Request: HEAD https://huggingface.co/bert-base-multilingual-uncased/resolve/main/config.json "HTTP/1.1 200 OK"
+2026-06-28 07:06:04,882 | HTTP Request: HEAD https://huggingface.co/bert-base-multilingual-uncased/resolve/main/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 07:06:05,143 | HTTP Request: GET https://huggingface.co/api/models/bert-base-multilingual-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:06:05,402 | HTTP Request: GET https://huggingface.co/api/models/google-bert/bert-base-multilingual-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 07:06:05,667 | HTTP Request: GET https://huggingface.co/api/models/bert-base-multilingual-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:06:05,931 | HTTP Request: GET https://huggingface.co/api/models/google-bert/bert-base-multilingual-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 07:06:06,726 | HTTP Request: GET https://huggingface.co/api/models/bert-base-multilingual-uncased "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:06:06,996 | HTTP Request: GET https://huggingface.co/api/models/google-bert/bert-base-multilingual-uncased "HTTP/1.1 200 OK"
+2026-06-28 07:06:07,273 | HTTP Request: HEAD https://huggingface.co/kykim/bert-kor-base/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:06:07,306 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/kykim/bert-kor-base/1779cc0982ada0216dd6de0dd4e86fb78201926d/config.json "HTTP/1.1 200 OK"
+2026-06-28 07:06:07,570 | HTTP Request: HEAD https://huggingface.co/kykim/bert-kor-base/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:06:07,604 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/kykim/bert-kor-base/1779cc0982ada0216dd6de0dd4e86fb78201926d/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 07:06:07,866 | HTTP Request: GET https://huggingface.co/api/models/kykim/bert-kor-base/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 07:06:08,157 | HTTP Request: GET https://huggingface.co/api/models/kykim/bert-kor-base/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 07:06:09,577 | HTTP Request: HEAD https://huggingface.co/dbmdz/bert-base-french-europeana-cased/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:06:09,609 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/dbmdz/bert-base-french-europeana-cased/b895c3cf291f7bf4c15639078a6bee0b3e272c5b/config.json "HTTP/1.1 200 OK"
+2026-06-28 07:06:09,870 | HTTP Request: HEAD https://huggingface.co/dbmdz/bert-base-french-europeana-cased/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:06:09,903 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/dbmdz/bert-base-french-europeana-cased/b895c3cf291f7bf4c15639078a6bee0b3e272c5b/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 07:06:10,168 | HTTP Request: GET https://huggingface.co/api/models/dbmdz/bert-base-french-europeana-cased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 07:06:10,440 | HTTP Request: GET https://huggingface.co/api/models/dbmdz/bert-base-french-europeana-cased/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 07:06:10,769 | HTTP Request: HEAD https://huggingface.co/dccuchile/bert-base-spanish-wwm-uncased/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:06:10,801 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/dccuchile/bert-base-spanish-wwm-uncased/d1c9c4565c9d6731e57ed7f027b802697bad861e/config.json "HTTP/1.1 200 OK"
+2026-06-28 07:06:11,075 | HTTP Request: HEAD https://huggingface.co/dccuchile/bert-base-spanish-wwm-uncased/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:06:11,110 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/dccuchile/bert-base-spanish-wwm-uncased/d1c9c4565c9d6731e57ed7f027b802697bad861e/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 07:06:11,391 | HTTP Request: GET https://huggingface.co/api/models/dccuchile/bert-base-spanish-wwm-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 07:06:11,662 | HTTP Request: GET https://huggingface.co/api/models/dccuchile/bert-base-spanish-wwm-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 07:06:12,517 |   Downloading OpenVoiceV2 checkpoint (cached after first run)...
+2026-06-28 07:06:12,777 | HTTP Request: GET https://huggingface.co/api/models/myshell-ai/OpenVoiceV2/revision/main "HTTP/1.1 200 OK"
+2026-06-28 07:06:14,410 | HTTP Request: HEAD https://huggingface.co/M4869/WavMark/resolve/main/step59000_snr39.99_pesq4.35_BERP_none0.30_mean1.81_std1.81.model.pkl "HTTP/1.1 302 Found"
+2026-06-28 07:06:14,630 |   OpenVoiceV2 loaded.
+2026-06-28 07:06:14,631 |   Accent       Cosine Sim
+2026-06-28 07:06:14,635 |   -------------------------
+2026-06-28 07:06:15,473 | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-medium/revision/main "HTTP/1.1 200 OK"
+2026-06-28 07:06:15,735 | HTTP Request: HEAD https://huggingface.co/Systran/faster-whisper-medium/resolve/08e178d48790749d25932bbc082711ddcfdfbc4f/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:06:15,768 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Systran/faster-whisper-medium/08e178d48790749d25932bbc082711ddcfdfbc4f/config.json "HTTP/1.1 200 OK"
+2026-06-28 07:06:15,794 | HTTP Request: HEAD https://huggingface.co/Systran/faster-whisper-medium/resolve/08e178d48790749d25932bbc082711ddcfdfbc4f/vocabulary.txt "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:06:15,802 | HTTP Request: GET https://huggingface.co/api/resolve-cache/models/Systran/faster-whisper-medium/08e178d48790749d25932bbc082711ddcfdfbc4f/config.json "HTTP/1.1 200 OK"
+2026-06-28 07:06:15,804 | HTTP Request: HEAD https://huggingface.co/Systran/faster-whisper-medium/resolve/08e178d48790749d25932bbc082711ddcfdfbc4f/model.bin "HTTP/1.1 302 Found"
+2026-06-28 07:06:15,811 | HTTP Request: HEAD https://huggingface.co/Systran/faster-whisper-medium/resolve/08e178d48790749d25932bbc082711ddcfdfbc4f/tokenizer.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:06:15,831 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Systran/faster-whisper-medium/08e178d48790749d25932bbc082711ddcfdfbc4f/vocabulary.txt "HTTP/1.1 200 OK"
+2026-06-28 07:06:15,844 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Systran/faster-whisper-medium/08e178d48790749d25932bbc082711ddcfdfbc4f/tokenizer.json "HTTP/1.1 200 OK"
+2026-06-28 07:06:15,865 | HTTP Request: GET https://huggingface.co/api/resolve-cache/models/Systran/faster-whisper-medium/08e178d48790749d25932bbc082711ddcfdfbc4f/vocabulary.txt "HTTP/1.1 200 OK"
+2026-06-28 07:06:15,883 | HTTP Request: GET https://huggingface.co/api/resolve-cache/models/Systran/faster-whisper-medium/08e178d48790749d25932bbc082711ddcfdfbc4f/tokenizer.json "HTTP/1.1 200 OK"
+2026-06-28 07:06:39,658 | Processing audio with duration 00:02.357
+2026-06-28 07:06:39,980 | Detected language 'en' with probability 0.99
+2026-06-28 07:06:40,432 |   us               0.7355
+2026-06-28 07:06:40,847 | Processing audio with duration 00:01.962
+2026-06-28 07:06:40,930 | Detected language 'en' with probability 0.71
+2026-06-28 07:06:41,122 |   br               0.8188
+2026-06-28 07:06:41,565 | Processing audio with duration 00:02.299
+2026-06-28 07:06:41,685 | Detected language 'en' with probability 0.92
+2026-06-28 07:06:41,874 |   india            0.7813
+2026-06-28 07:06:42,317 | Processing audio with duration 00:02.345
+2026-06-28 07:06:42,401 | Detected language 'en' with probability 0.98
+2026-06-28 07:06:42,597 |   au               0.7691
+2026-06-28 07:06:42,775 |   Plot saved to plots/cosine_sim.png
+2026-06-28 07:07:23,615 | === Part 5: Voice Cloning (OpenVoice) ===
+2026-06-28 07:07:30,381 | HTTP Request: HEAD https://huggingface.co/tohoku-nlp/bert-base-japanese-v3/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:07:30,382 | Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-06-28 07:07:30,414 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/tohoku-nlp/bert-base-japanese-v3/65243d6e5629b969c77309f217bd7b1a79d43c7e/config.json "HTTP/1.1 200 OK"
+2026-06-28 07:07:30,680 | HTTP Request: HEAD https://huggingface.co/tohoku-nlp/bert-base-japanese-v3/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:07:30,714 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/tohoku-nlp/bert-base-japanese-v3/65243d6e5629b969c77309f217bd7b1a79d43c7e/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 07:07:30,985 | HTTP Request: HEAD https://huggingface.co/tohoku-nlp/bert-base-japanese-v3/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:07:31,020 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/tohoku-nlp/bert-base-japanese-v3/65243d6e5629b969c77309f217bd7b1a79d43c7e/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 07:07:31,278 | HTTP Request: GET https://huggingface.co/api/models/tohoku-nlp/bert-base-japanese-v3/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 07:07:31,543 | HTTP Request: GET https://huggingface.co/api/models/tohoku-nlp/bert-base-japanese-v3/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 07:07:33,354 | HTTP Request: HEAD https://huggingface.co/bert-base-uncased/resolve/main/config.json "HTTP/1.1 200 OK"
+2026-06-28 07:07:33,617 | HTTP Request: HEAD https://huggingface.co/bert-base-uncased/resolve/main/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 07:07:33,877 | HTTP Request: GET https://huggingface.co/api/models/bert-base-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:07:34,137 | HTTP Request: GET https://huggingface.co/api/models/google-bert/bert-base-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 07:07:34,618 | HTTP Request: GET https://huggingface.co/api/models/bert-base-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:07:34,875 | HTTP Request: GET https://huggingface.co/api/models/google-bert/bert-base-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 07:07:35,281 | HTTP Request: HEAD https://huggingface.co/bert-base-multilingual-uncased/resolve/main/config.json "HTTP/1.1 200 OK"
+2026-06-28 07:07:35,537 | HTTP Request: HEAD https://huggingface.co/bert-base-multilingual-uncased/resolve/main/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 07:07:35,806 | HTTP Request: GET https://huggingface.co/api/models/bert-base-multilingual-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:07:36,073 | HTTP Request: GET https://huggingface.co/api/models/google-bert/bert-base-multilingual-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 07:07:36,334 | HTTP Request: GET https://huggingface.co/api/models/bert-base-multilingual-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:07:36,603 | HTTP Request: GET https://huggingface.co/api/models/google-bert/bert-base-multilingual-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 07:07:37,371 | HTTP Request: GET https://huggingface.co/api/models/bert-base-multilingual-uncased "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:07:37,642 | HTTP Request: GET https://huggingface.co/api/models/google-bert/bert-base-multilingual-uncased "HTTP/1.1 200 OK"
+2026-06-28 07:07:37,924 | HTTP Request: HEAD https://huggingface.co/kykim/bert-kor-base/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:07:37,957 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/kykim/bert-kor-base/1779cc0982ada0216dd6de0dd4e86fb78201926d/config.json "HTTP/1.1 200 OK"
+2026-06-28 07:07:38,225 | HTTP Request: HEAD https://huggingface.co/kykim/bert-kor-base/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:07:38,259 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/kykim/bert-kor-base/1779cc0982ada0216dd6de0dd4e86fb78201926d/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 07:07:38,517 | HTTP Request: GET https://huggingface.co/api/models/kykim/bert-kor-base/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 07:07:38,788 | HTTP Request: GET https://huggingface.co/api/models/kykim/bert-kor-base/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 07:07:40,207 | HTTP Request: HEAD https://huggingface.co/dbmdz/bert-base-french-europeana-cased/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:07:40,239 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/dbmdz/bert-base-french-europeana-cased/b895c3cf291f7bf4c15639078a6bee0b3e272c5b/config.json "HTTP/1.1 200 OK"
+2026-06-28 07:07:40,505 | HTTP Request: HEAD https://huggingface.co/dbmdz/bert-base-french-europeana-cased/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:07:40,539 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/dbmdz/bert-base-french-europeana-cased/b895c3cf291f7bf4c15639078a6bee0b3e272c5b/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 07:07:40,808 | HTTP Request: GET https://huggingface.co/api/models/dbmdz/bert-base-french-europeana-cased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 07:07:41,073 | HTTP Request: GET https://huggingface.co/api/models/dbmdz/bert-base-french-europeana-cased/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 07:07:41,390 | HTTP Request: HEAD https://huggingface.co/dccuchile/bert-base-spanish-wwm-uncased/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:07:41,422 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/dccuchile/bert-base-spanish-wwm-uncased/d1c9c4565c9d6731e57ed7f027b802697bad861e/config.json "HTTP/1.1 200 OK"
+2026-06-28 07:07:41,695 | HTTP Request: HEAD https://huggingface.co/dccuchile/bert-base-spanish-wwm-uncased/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:07:41,729 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/dccuchile/bert-base-spanish-wwm-uncased/d1c9c4565c9d6731e57ed7f027b802697bad861e/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 07:07:41,989 | HTTP Request: GET https://huggingface.co/api/models/dccuchile/bert-base-spanish-wwm-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 07:07:42,252 | HTTP Request: GET https://huggingface.co/api/models/dccuchile/bert-base-spanish-wwm-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 07:07:43,107 |   Downloading OpenVoiceV2 checkpoint (cached after first run)...
+2026-06-28 07:07:43,367 | HTTP Request: GET https://huggingface.co/api/models/myshell-ai/OpenVoiceV2/revision/main "HTTP/1.1 200 OK"
+2026-06-28 07:07:45,035 | HTTP Request: HEAD https://huggingface.co/M4869/WavMark/resolve/main/step59000_snr39.99_pesq4.35_BERP_none0.30_mean1.81_std1.81.model.pkl "HTTP/1.1 302 Found"
+2026-06-28 07:07:45,286 |   OpenVoiceV2 loaded.
+2026-06-28 07:07:45,540 | HTTP Request: HEAD https://huggingface.co/myshell-ai/MeloTTS-English/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:07:45,573 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/myshell-ai/MeloTTS-English/bb4fb7346d566d277ba8c8c7dbfdf6786139b8ef/config.json "HTTP/1.1 200 OK"
+2026-06-28 07:07:46,865 | HTTP Request: HEAD https://huggingface.co/myshell-ai/MeloTTS-English/resolve/main/checkpoint.pth "HTTP/1.1 302 Found"
+2026-06-28 07:07:47,580 | HTTP Request: HEAD https://huggingface.co/bert-base-uncased/resolve/main/config.json "HTTP/1.1 200 OK"
+2026-06-28 07:07:47,844 | HTTP Request: HEAD https://huggingface.co/bert-base-uncased/resolve/main/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 07:07:48,103 | HTTP Request: GET https://huggingface.co/api/models/bert-base-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:07:48,378 | HTTP Request: GET https://huggingface.co/api/models/google-bert/bert-base-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 07:07:48,633 | HTTP Request: GET https://huggingface.co/api/models/bert-base-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:07:48,893 | HTTP Request: GET https://huggingface.co/api/models/google-bert/bert-base-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 07:07:49,314 | HTTP Request: HEAD https://huggingface.co/dccuchile/bert-base-spanish-wwm-uncased/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:07:49,348 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/dccuchile/bert-base-spanish-wwm-uncased/d1c9c4565c9d6731e57ed7f027b802697bad861e/config.json "HTTP/1.1 200 OK"
+2026-06-28 07:07:49,611 | HTTP Request: HEAD https://huggingface.co/dccuchile/bert-base-spanish-wwm-uncased/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:07:49,643 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/dccuchile/bert-base-spanish-wwm-uncased/d1c9c4565c9d6731e57ed7f027b802697bad861e/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 07:07:49,898 | HTTP Request: GET https://huggingface.co/api/models/dccuchile/bert-base-spanish-wwm-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 07:07:50,157 | HTTP Request: GET https://huggingface.co/api/models/dccuchile/bert-base-spanish-wwm-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 07:07:50,507 | HTTP Request: HEAD https://huggingface.co/dbmdz/bert-base-french-europeana-cased/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:07:50,546 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/dbmdz/bert-base-french-europeana-cased/b895c3cf291f7bf4c15639078a6bee0b3e272c5b/config.json "HTTP/1.1 200 OK"
+2026-06-28 07:07:50,800 | HTTP Request: HEAD https://huggingface.co/dbmdz/bert-base-french-europeana-cased/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:07:50,834 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/dbmdz/bert-base-french-europeana-cased/b895c3cf291f7bf4c15639078a6bee0b3e272c5b/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 07:07:51,096 | HTTP Request: GET https://huggingface.co/api/models/dbmdz/bert-base-french-europeana-cased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 07:07:51,369 | HTTP Request: GET https://huggingface.co/api/models/dbmdz/bert-base-french-europeana-cased/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 07:07:51,685 | HTTP Request: HEAD https://huggingface.co/bert-base-uncased/resolve/main/config.json "HTTP/1.1 200 OK"
+2026-06-28 07:07:55,051 |   [EN] "I got the job!" -> data/voice_clone/cloned_EN.wav
+2026-06-28 07:07:55,320 | HTTP Request: HEAD https://huggingface.co/myshell-ai/MeloTTS-Spanish/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:07:55,353 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/myshell-ai/MeloTTS-Spanish/dbb5496df39d11a66c1d5f5a9ca357c3c9fb95fb/config.json "HTTP/1.1 200 OK"
+2026-06-28 07:07:55,389 | HTTP Request: GET https://huggingface.co/api/resolve-cache/models/myshell-ai/MeloTTS-Spanish/dbb5496df39d11a66c1d5f5a9ca357c3c9fb95fb/config.json "HTTP/1.1 200 OK"
+2026-06-28 07:07:56,592 | HTTP Request: HEAD https://huggingface.co/myshell-ai/MeloTTS-Spanish/resolve/main/checkpoint.pth "HTTP/1.1 302 Found"
+2026-06-28 07:08:10,788 |   [ES] "Hola, esta es una prueba de clonacion de voz entre idiomas." -> data/voice_clone/cloned_ES.wav
+2026-06-28 07:08:11,112 | HTTP Request: HEAD https://huggingface.co/myshell-ai/MeloTTS-French/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:08:11,146 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/myshell-ai/MeloTTS-French/1e9bf590262392d8bffb679b0a3b0c16b0f9fdaf/config.json "HTTP/1.1 200 OK"
+2026-06-28 07:08:11,182 | HTTP Request: GET https://huggingface.co/api/resolve-cache/models/myshell-ai/MeloTTS-French/1e9bf590262392d8bffb679b0a3b0c16b0f9fdaf/config.json "HTTP/1.1 200 OK"
+2026-06-28 07:08:12,329 | HTTP Request: HEAD https://huggingface.co/myshell-ai/MeloTTS-French/resolve/main/checkpoint.pth "HTTP/1.1 302 Found"
+2026-06-28 07:08:24,602 | HTTP Request: HEAD https://huggingface.co/dbmdz/bert-base-french-europeana-cased/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:08:24,636 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/dbmdz/bert-base-french-europeana-cased/b895c3cf291f7bf4c15639078a6bee0b3e272c5b/config.json "HTTP/1.1 200 OK"
+2026-06-28 07:08:24,910 | HTTP Request: HEAD https://huggingface.co/dbmdz/bert-base-french-europeana-cased/resolve/main/model.safetensors "HTTP/1.1 404 Not Found"
+2026-06-28 07:08:25,168 | HTTP Request: HEAD https://huggingface.co/dbmdz/bert-base-french-europeana-cased/resolve/main/model.safetensors.index.json "HTTP/1.1 404 Not Found"
+2026-06-28 07:08:25,436 | HTTP Request: HEAD https://huggingface.co/dbmdz/bert-base-french-europeana-cased/resolve/main/pytorch_model.bin "HTTP/1.1 302 Found"
+2026-06-28 07:08:42,667 | HTTP Request: HEAD https://huggingface.co/dbmdz/bert-base-french-europeana-cased/resolve/main/model.safetensors "HTTP/1.1 404 Not Found"
+2026-06-28 07:08:42,930 | HTTP Request: GET https://huggingface.co/api/models/dbmdz/bert-base-french-europeana-cased "HTTP/1.1 200 OK"
+2026-06-28 07:08:43,216 | HTTP Request: GET https://huggingface.co/api/models/dbmdz/bert-base-french-europeana-cased/commits/main "HTTP/1.1 200 OK"
+2026-06-28 07:08:43,485 | HTTP Request: GET https://huggingface.co/api/models/dbmdz/bert-base-french-europeana-cased/discussions?p=0 "HTTP/1.1 200 OK"
+2026-06-28 07:08:43,794 | HTTP Request: GET https://huggingface.co/api/models/dbmdz/bert-base-french-europeana-cased/commits/refs%2Fpr%2F2 "HTTP/1.1 200 OK"
+2026-06-28 07:08:44,082 | HTTP Request: HEAD https://huggingface.co/dbmdz/bert-base-french-europeana-cased/resolve/refs%2Fpr%2F2/model.safetensors.index.json "HTTP/1.1 404 Not Found"
+2026-06-28 07:08:44,351 | HTTP Request: HEAD https://huggingface.co/dbmdz/bert-base-french-europeana-cased/resolve/refs%2Fpr%2F2/model.safetensors "HTTP/1.1 302 Found"
+2026-06-28 07:12:01,427 | === Part 5: Voice Cloning (OpenVoice) ===
+2026-06-28 07:12:08,189 | HTTP Request: HEAD https://huggingface.co/tohoku-nlp/bert-base-japanese-v3/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:12:08,224 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/tohoku-nlp/bert-base-japanese-v3/65243d6e5629b969c77309f217bd7b1a79d43c7e/config.json "HTTP/1.1 200 OK"
+2026-06-28 07:12:08,553 | HTTP Request: HEAD https://huggingface.co/tohoku-nlp/bert-base-japanese-v3/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:12:08,554 | Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-06-28 07:12:08,599 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/tohoku-nlp/bert-base-japanese-v3/65243d6e5629b969c77309f217bd7b1a79d43c7e/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 07:12:08,858 | HTTP Request: HEAD https://huggingface.co/tohoku-nlp/bert-base-japanese-v3/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:12:08,893 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/tohoku-nlp/bert-base-japanese-v3/65243d6e5629b969c77309f217bd7b1a79d43c7e/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 07:12:09,161 | HTTP Request: GET https://huggingface.co/api/models/tohoku-nlp/bert-base-japanese-v3/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 07:12:09,431 | HTTP Request: GET https://huggingface.co/api/models/tohoku-nlp/bert-base-japanese-v3/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 07:12:11,127 | HTTP Request: HEAD https://huggingface.co/bert-base-uncased/resolve/main/config.json "HTTP/1.1 200 OK"
+2026-06-28 07:12:11,397 | HTTP Request: HEAD https://huggingface.co/bert-base-uncased/resolve/main/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 07:12:11,664 | HTTP Request: GET https://huggingface.co/api/models/bert-base-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:12:11,921 | HTTP Request: GET https://huggingface.co/api/models/google-bert/bert-base-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 07:12:12,186 | HTTP Request: GET https://huggingface.co/api/models/bert-base-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:12:12,445 | HTTP Request: GET https://huggingface.co/api/models/google-bert/bert-base-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 07:12:12,840 | HTTP Request: HEAD https://huggingface.co/bert-base-multilingual-uncased/resolve/main/config.json "HTTP/1.1 200 OK"
+2026-06-28 07:12:13,107 | HTTP Request: HEAD https://huggingface.co/bert-base-multilingual-uncased/resolve/main/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 07:12:13,369 | HTTP Request: GET https://huggingface.co/api/models/bert-base-multilingual-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:12:13,622 | HTTP Request: GET https://huggingface.co/api/models/google-bert/bert-base-multilingual-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 07:12:13,890 | HTTP Request: GET https://huggingface.co/api/models/bert-base-multilingual-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:12:14,166 | HTTP Request: GET https://huggingface.co/api/models/google-bert/bert-base-multilingual-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 07:12:14,888 | HTTP Request: GET https://huggingface.co/api/models/bert-base-multilingual-uncased "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:12:15,154 | HTTP Request: GET https://huggingface.co/api/models/google-bert/bert-base-multilingual-uncased "HTTP/1.1 200 OK"
+2026-06-28 07:12:15,421 | HTTP Request: HEAD https://huggingface.co/kykim/bert-kor-base/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:12:15,456 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/kykim/bert-kor-base/1779cc0982ada0216dd6de0dd4e86fb78201926d/config.json "HTTP/1.1 200 OK"
+2026-06-28 07:12:15,736 | HTTP Request: HEAD https://huggingface.co/kykim/bert-kor-base/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:12:15,771 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/kykim/bert-kor-base/1779cc0982ada0216dd6de0dd4e86fb78201926d/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 07:12:16,032 | HTTP Request: GET https://huggingface.co/api/models/kykim/bert-kor-base/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 07:12:16,305 | HTTP Request: GET https://huggingface.co/api/models/kykim/bert-kor-base/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 07:12:17,555 | HTTP Request: HEAD https://huggingface.co/dbmdz/bert-base-french-europeana-cased/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:12:17,589 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/dbmdz/bert-base-french-europeana-cased/b895c3cf291f7bf4c15639078a6bee0b3e272c5b/config.json "HTTP/1.1 200 OK"
+2026-06-28 07:12:17,853 | HTTP Request: HEAD https://huggingface.co/dbmdz/bert-base-french-europeana-cased/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:12:17,888 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/dbmdz/bert-base-french-europeana-cased/b895c3cf291f7bf4c15639078a6bee0b3e272c5b/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 07:12:18,151 | HTTP Request: GET https://huggingface.co/api/models/dbmdz/bert-base-french-europeana-cased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 07:12:18,424 | HTTP Request: GET https://huggingface.co/api/models/dbmdz/bert-base-french-europeana-cased/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 07:12:18,689 | HTTP Request: HEAD https://huggingface.co/dbmdz/bert-base-french-europeana-cased/resolve/main/tokenizer.json "HTTP/1.1 404 Not Found"
+2026-06-28 07:12:18,963 | HTTP Request: HEAD https://huggingface.co/dbmdz/bert-base-french-europeana-cased/resolve/main/added_tokens.json "HTTP/1.1 404 Not Found"
+2026-06-28 07:12:19,238 | HTTP Request: HEAD https://huggingface.co/dbmdz/bert-base-french-europeana-cased/resolve/main/special_tokens_map.json "HTTP/1.1 404 Not Found"
+2026-06-28 07:12:19,509 | HTTP Request: HEAD https://huggingface.co/dbmdz/bert-base-french-europeana-cased/resolve/main/chat_template.jinja "HTTP/1.1 404 Not Found"
+2026-06-28 07:12:19,827 | HTTP Request: HEAD https://huggingface.co/dccuchile/bert-base-spanish-wwm-uncased/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:12:19,862 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/dccuchile/bert-base-spanish-wwm-uncased/d1c9c4565c9d6731e57ed7f027b802697bad861e/config.json "HTTP/1.1 200 OK"
+2026-06-28 07:12:20,128 | HTTP Request: HEAD https://huggingface.co/dccuchile/bert-base-spanish-wwm-uncased/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:12:20,165 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/dccuchile/bert-base-spanish-wwm-uncased/d1c9c4565c9d6731e57ed7f027b802697bad861e/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 07:12:20,432 | HTTP Request: GET https://huggingface.co/api/models/dccuchile/bert-base-spanish-wwm-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 07:12:20,696 | HTTP Request: GET https://huggingface.co/api/models/dccuchile/bert-base-spanish-wwm-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 07:12:21,526 |   Downloading OpenVoiceV2 checkpoint (cached after first run)...
+2026-06-28 07:12:21,790 | HTTP Request: GET https://huggingface.co/api/models/myshell-ai/OpenVoiceV2/revision/main "HTTP/1.1 200 OK"
+2026-06-28 07:12:23,496 | HTTP Request: HEAD https://huggingface.co/M4869/WavMark/resolve/main/step59000_snr39.99_pesq4.35_BERP_none0.30_mean1.81_std1.81.model.pkl "HTTP/1.1 302 Found"
+2026-06-28 07:12:23,710 |   OpenVoiceV2 loaded.
+2026-06-28 07:12:23,972 | HTTP Request: HEAD https://huggingface.co/myshell-ai/MeloTTS-French/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:12:24,006 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/myshell-ai/MeloTTS-French/1e9bf590262392d8bffb679b0a3b0c16b0f9fdaf/config.json "HTTP/1.1 200 OK"
+2026-06-28 07:12:25,221 | HTTP Request: HEAD https://huggingface.co/myshell-ai/MeloTTS-French/resolve/main/checkpoint.pth "HTTP/1.1 302 Found"
+2026-06-28 07:12:25,793 | HTTP Request: HEAD https://huggingface.co/bert-base-uncased/resolve/main/config.json "HTTP/1.1 200 OK"
+2026-06-28 07:12:26,056 | HTTP Request: HEAD https://huggingface.co/bert-base-uncased/resolve/main/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 07:12:26,318 | HTTP Request: GET https://huggingface.co/api/models/bert-base-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:12:26,581 | HTTP Request: GET https://huggingface.co/api/models/google-bert/bert-base-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 07:12:26,841 | HTTP Request: GET https://huggingface.co/api/models/bert-base-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:12:27,106 | HTTP Request: GET https://huggingface.co/api/models/google-bert/bert-base-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 07:12:27,515 | HTTP Request: HEAD https://huggingface.co/dccuchile/bert-base-spanish-wwm-uncased/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:12:27,549 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/dccuchile/bert-base-spanish-wwm-uncased/d1c9c4565c9d6731e57ed7f027b802697bad861e/config.json "HTTP/1.1 200 OK"
+2026-06-28 07:12:27,818 | HTTP Request: HEAD https://huggingface.co/dccuchile/bert-base-spanish-wwm-uncased/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:12:27,853 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/dccuchile/bert-base-spanish-wwm-uncased/d1c9c4565c9d6731e57ed7f027b802697bad861e/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 07:12:28,120 | HTTP Request: GET https://huggingface.co/api/models/dccuchile/bert-base-spanish-wwm-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 07:12:28,390 | HTTP Request: GET https://huggingface.co/api/models/dccuchile/bert-base-spanish-wwm-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 07:12:28,753 | HTTP Request: HEAD https://huggingface.co/dbmdz/bert-base-french-europeana-cased/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:12:28,788 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/dbmdz/bert-base-french-europeana-cased/b895c3cf291f7bf4c15639078a6bee0b3e272c5b/config.json "HTTP/1.1 200 OK"
+2026-06-28 07:12:29,063 | HTTP Request: HEAD https://huggingface.co/dbmdz/bert-base-french-europeana-cased/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:12:29,100 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/dbmdz/bert-base-french-europeana-cased/b895c3cf291f7bf4c15639078a6bee0b3e272c5b/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 07:12:29,364 | HTTP Request: GET https://huggingface.co/api/models/dbmdz/bert-base-french-europeana-cased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 07:12:29,639 | HTTP Request: GET https://huggingface.co/api/models/dbmdz/bert-base-french-europeana-cased/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 07:12:29,949 | HTTP Request: HEAD https://huggingface.co/dbmdz/bert-base-french-europeana-cased/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 07:12:29,984 | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/dbmdz/bert-base-french-europeana-cased/b895c3cf291f7bf4c15639078a6bee0b3e272c5b/config.json "HTTP/1.1 200 OK"
+2026-06-28 07:12:33,198 |   [FR] "Bonjour, ceci est un test de clonage vocal interlingue." -> data/voice_clone/cloned_FR.wav
